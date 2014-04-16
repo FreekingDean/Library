@@ -30,16 +30,16 @@ func multiRec(client *Client, msg string) {
       case "admin": RecAdmin(recMsg.params["cmd"], recMsg.params, client); break
       default: SendErr(client, "No command/commmand not recognized", "no_cmd")
     }
-  } else {
-    if recMsg.cmd == "log_in" {
-      userName, unok := recMsg.params["user_name"];
-      password, passok := recMsg.params["password"];
-      if unok && passok {
-        client.authUser(userName, password)
-      } else {
-        SendErr(client, "No Username or Password Specified", "cred")
+  } else { //if not authed
+    if recMsg.cmd == "login" {
+      RecAdmin("login", params, client)
+      if authed, ok := RecAdmin("login", params, client).(bool); ok && authed {
+        client.Authed = true
+        SendMessage(client, "logged_in", nil)
+      } else { //if client returned false or other var
+        SendErr(client, "Password or Username incorrect", "auth")
       }
-    } else {
+    } else { //if command != "login"
       SendErr(client, "Please authenticate first", "auth")
   }
 }
@@ -72,6 +72,7 @@ func SendErr(client *Client, msg string, code string) {
   client.SendMsg(string(message))
 }
 
+/* NOT NEEDED WHY DID I DO THIS???
 func (client *Client) authUser(userName, password string) {
   params := make(map[string]string)
   params["user_name"] = userName
@@ -83,3 +84,4 @@ func (client *Client) authUser(userName, password string) {
     SendErr(client, "Password or Username incorrect", "auth")
   }
 }
+*/
