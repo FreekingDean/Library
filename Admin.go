@@ -34,13 +34,40 @@ func modifyUser(params[string]string, client *Client) bool {
   password, passOk := params["password"]
   firstName, fnOk := params["first_name"]
   lastName, lnOk := params["last_name"]
-  phonenum, phOk := params["phone_number"]
-  address, addrOk := params["address"]
-  
   role, roleOk := params["role"]
-  if !unOk || !passOk || !fnOk || !lnOk || !roleOk || !phOk || !addrOk{
+  if !unOk || !passOk || !fnOk || !lnOk || !roleOk {
     SendErr(client, "Not all credentials inputted", "cred")
-    return
+    return false
   }
   user := GetUser(params["username"])
-  user.
+  passwordDigest, err := GenerateFromPassword()
+  if err != nil {
+    log.Println(err)
+    SendErr(client, "Password hash error", "hash")
+    return false
+  }
+  user.PasswordDigest = passwordDigest
+  user.Username = username
+  user.FirstName = firstName
+  user.LastName = lastName
+  user.Role = role //ADMN MNGR CSHR WRHS ACCT
+  db.Save(&user)
+  return true
+}
+
+func deleteUser(params[string]string, client *Client) bool {
+  if login(params, client) {
+    user := GetUser(params["username"])
+    db.Delete(&user)
+    return true
+  }
+  return false
+}
+
+func backupSystem(params[string]string, client *Client) bool {
+  //BACKUP
+}
+
+func restoreSystem(params[string]string, client *Client) bool {
+  //RESTORE
+}
