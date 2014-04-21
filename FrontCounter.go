@@ -64,7 +64,9 @@ func reserve(params map[string]string, client *Client) bool {
     }
   }
   book.Reserve = append(book.Reserve, Reserve{BookId: book.Id, CustomerId: customerID}
-  
+  db.Save(&book)
+  return true
+}
 
 func checkIn(params map[string]string, client *Client) bool {
   isbn, isbnOk := params["isbn"]
@@ -102,6 +104,29 @@ func checkIn(params map[string]string, client *Client) bool {
   }
   db.Save(&book)
   return true
+}
+
+func alertReserve(custID int, client *Client) {
+  info := make(map[string]string)
+  info["customer_id"] = strconv.Itoa(custID)
+  SendMsg(client, info)
+}
+
+func manageCustomer(params map[string]string, client *Client) bool {
+  custID, custIdOk := params["customer_id"]
+  if custIdOk {
+    cust := getCustomer(custID)
+  } else {
+    cust := Customer
+  }
+  firstName, firstOk := params["fist_name"]
+  last_name, lastOk := params["last_name"]
+  if !firstOk || !lastOk {
+    SendErr(client, "Need more info", "mc_info")
+  }
+  cust.FirstName = firstName
+  cust.LastName = lastName
+  db.Save(&cust)
 }
 
 func search(params map[string]string, client *Client) bool {
