@@ -18,7 +18,7 @@ func RecFC(command string, params map[string]string) {
   return nil
 }
 
-func checkOut(params map[string]string, client *Client) {
+func checkOut(params map[string]string, client *Client) bool {
   isbn, isbnOk:= params["isbn"]
   copyNumber, copyOk := params["copy_number"]
   customerID, custOk := params["customer_id"]
@@ -36,14 +36,105 @@ func checkOut(params map[string]string, client *Client) {
         customer.CheckedOut = append(customer.CheckedOut, thisCopy)
       } else {
         SendErr(client, "Too many books already checked out", "co_number")
+        return false
       }
     } else {
       SendErr(client, "Customer not in good standing", "cust_stand")
+      return false
     }
   } else {
     SendErr(client, "Book already checked out", "book_out")
+    return false
   }
+  return true
 }
 
-func checkIn(params map[string]string, client *Client) {
+func reserve(params map[string]string, client *Client) bool {
+  isbn, isbnOk := params["isbn"]
+  customerID, custOk := params["customer_id"]
+  if !isbnOk || !custOk || {
+    SendErr(client, "Need more info", "re_info")
+    return false
+  }
+  book := GetBook(isbn)
+  for id, thisCopy := range book.Copy {
+    if thisCopy.Available {
+      SendErr(client, "Book available with copy number: "+id, "rs_avail")
+      return false
+    }
+  }
+  book.Reserve = append(book.Reserve, Reserve{BookId: book.Id, CustomerId: customerID}
   
+
+func checkIn(params map[string]string, client *Client) bool {
+  isbn, isbnOk := params["isbn"]
+  copyNumber, copyOk := params["copy_number"]
+  customerID, custOk := params["customer_id"]
+  condition, condOk := params["condition"]
+  if !isbnOk || !copyOk || !custOk || !condOk {
+    SendErr(client, "Need more info", "ci_info")
+    return false
+  }
+  book := GetBook(isbn)
+  thisCopy := book.Copy[copyNumber]
+  if !thisCopy.Available {
+    if customer.CheckedOut[0] == thisCopy {
+      customer.CheckedOut = customer.CheckedOut[1:2]
+    } else if customer.CheckedOut[1] == thisCopy {
+      customer.CheckedOut = customer.CheckedOut[0:1]
+    } else {
+      SendErr(client, "Book not checked out to customer", "co_not_cust")
+      return false
+    }
+    if condition < thisCopy.Condition {
+      customer.Status++
+    }
+    thisCopy.Condition = condition
+    thisCopy.Available = true
+  } else {
+    SendErr(client, "Book not checked out", "co_not_out")
+    return false
+  }
+  if book.Reserve != nil {
+    reservation := book.Reserve[0]
+    alertReserve(reservation.CustomerID, client)
+    book.Reserve = book.Reserve[1:len(book.Reserve)]
+  }
+  db.Save(&book)
+  return true
+}
+
+func search(params map[string]string, client *Client) bool {
+  isbn, isbnOk := params["isbn"]
+  title, titleOk := params["title"]
+  author, authOk := params["author"]
+  ge  1nre, genreOk := params["genre"]
+  start, startOk := params["start"]
+  var books []Book
+  if !startOk {
+    start = 0
+  }
+  userSearch := User
+  if isbnOk {
+    db.Offset(start*OFFSET_NUM).Where("isbn=?", isbn).Limit(OFFSET_NUM).Find(&books)
+    SendMessage(client, "search_return", books)
+  }
+  if titleOk {
+    searchTitle := "%"+title+"%"
+  } else {
+    searchTitle := "%%"
+  }
+  if authOk {
+    searchAuth := "%"+author+"%"
+  } else {
+    searchAuth := "%%"
+  }
+  if genreOk {
+    searchGenre := "%"+genre+"%"
+  } else {
+    searchGenre := "%%"
+  }
+  db.Offset(start*OFFSET_NUM).Where("title LIKE ? and author LIKE ? and genre LIKE ?", searchTitle).Limit(OFFSET_NUM).Find(&books)
+  SendMessage(client, "search_return", books)
+  return true
+}
