@@ -115,7 +115,7 @@ func alertReserve(custID int, client *Client) {
 func manageCustomer(params map[string]string, client *Client) bool {
   custID, custIdOk := params["customer_id"]
   if custIdOk {
-    cust := getCustomer(custID)
+    cust := GetCustomer(custID)
   } else {
     cust := Customer
   }
@@ -123,17 +123,32 @@ func manageCustomer(params map[string]string, client *Client) bool {
   last_name, lastOk := params["last_name"]
   if !firstOk || !lastOk {
     SendErr(client, "Need more info", "mc_info")
+    return false
   }
   cust.FirstName = firstName
   cust.LastName = lastName
+  cust.Status = params["status"]
   db.Save(&cust)
+  return true
+}
+
+func deleteCustomer(params map[string]string, client *Client) bool {
+  custID, custIdOk := params["customer_id"]
+  if !custIdOk {
+    SendErr(client, "Need more info", "dc_info")
+    return false
+  }
+  customer, found := GetCustomer(custId)
+  if !found {
+    SendErr(client, "Couldn't find customer with that ID", "dc_bad_id")
+    return false
+  } else {
+    db.Delete(&customer)
+    return true
+  }
 }
 
 func search(params map[string]string, client *Client) bool {
-  isbn, isbnOk := params["isbn"]
-  title, titleOk := params["title"]
-  author, authOk := params["author"]
-  ge  1nre, genreOk := params["genre"]
   start, startOk := params["start"]
   var books []Book
   if !startOk {
@@ -143,22 +158,11 @@ func search(params map[string]string, client *Client) bool {
   if isbnOk {
     db.Offset(start*OFFSET_NUM).Where("isbn=?", isbn).Limit(OFFSET_NUM).Find(&books)
     SendMessage(client, "search_return", books)
+    return true
   }
-  if titleOk {
-    searchTitle := "%"+title+"%"
-  } else {
-    searchTitle := "%%"
-  }
-  if authOk {
-    searchAuth := "%"+author+"%"
-  } else {
-    searchAuth := "%%"
-  }
-  if genreOk {
-    searchGenre := "%"+genre+"%"
-  } else {
-    searchGenre := "%%"
-  }
+  title := "%"+params["title"]+"%"
+  author := "%"+params["author"]+"%"
+  genre := "%"+params["genre"]+"%"
   db.Offset(start*OFFSET_NUM).Where("title LIKE ? and author LIKE ? and genre LIKE ?", searchTitle).Limit(OFFSET_NUM).Find(&books)
   SendMessage(client, "search_return", books)
   return true
