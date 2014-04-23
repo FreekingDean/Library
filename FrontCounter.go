@@ -26,7 +26,7 @@ func checkOut(params map[string]string, client *Client) bool {
     SendErr(client, "Need more info", "co_info")
     return
   }
-  book := GetBook(isbn)
+  book, exists := GetBook(isbn)
   thisCopy := book.Copy[copyNumber]
   if thisCopy.Available {
     customer := GetCustomer(customerID)
@@ -56,14 +56,14 @@ func reserve(params map[string]string, client *Client) bool {
     SendErr(client, "Need more info", "re_info")
     return false
   }
-  book := GetBook(isbn)
+  book, exists := GetBook(isbn)
   for id, thisCopy := range book.Copy {
     if thisCopy.Available {
       SendErr(client, "Book available with copy number: "+id, "rs_avail")
       return false
     }
   }
-  book.Reserve = append(book.Reserve, Reserve{BookId: book.Id, CustomerId: customerID}
+  book.Reserve = append(book.Reserve, Reserve{Customer: customerID}
   db.Save(&book)
   return true
 }
@@ -99,7 +99,7 @@ func checkIn(params map[string]string, client *Client) bool {
   }
   if book.Reserve != nil {
     reservation := book.Reserve[0]
-    alertReserve(reservation.CustomerID, client)
+    alertReserve(reservation.Customer, client)
     book.Reserve = book.Reserve[1:len(book.Reserve)]
   }
   db.Save(&book)
