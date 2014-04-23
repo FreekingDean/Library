@@ -114,15 +114,15 @@ func alertReserve(custID int, client *Client) {
 
 func manageCustomer(params map[string]string, client *Client) bool {
   custID, custIdOk := params["customer_id"]
-  if custIdOk {
-    cust := GetCustomer(custID)
-  } else {
-    cust := Customer
-  }
   firstName, firstOk := params["fist_name"]
   last_name, lastOk := params["last_name"]
-  if !firstOk || !lastOk {
+  if !firstOk || !lastOk || !custOk {
     SendErr(client, "Need more info", "mc_info")
+    return false
+  }
+  customer, found := GetCustomer(custId)
+  if !found {
+    SendErr(client, "Couldn't find customer with that ID", "dc_bad_id")
     return false
   }
   cust.FirstName = firstName
@@ -142,10 +142,9 @@ func deleteCustomer(params map[string]string, client *Client) bool {
   if !found {
     SendErr(client, "Couldn't find customer with that ID", "dc_bad_id")
     return false
-  } else {
-    db.Delete(&customer)
-    return true
   }
+  db.Delete(&customer)
+  return true
 }
 
 func search(params map[string]string, client *Client) bool {
