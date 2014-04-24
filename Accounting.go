@@ -4,6 +4,11 @@ import (
   "log"
 )
 
+//Recieves a command string and chooses which function to initiate
+//based on the string
+//
+//parm command String read to figure out what command to use
+//parm params is a list of all available strings to be used in later commands for comparisons 
 func RecAcc(command string, params map[string]string) bool {
   switch(cmd) {
     case: "set_budget_group" { return setBudgetGroup(params, client) }
@@ -15,6 +20,7 @@ func RecAcc(command string, params map[string]string) bool {
   return nil
 }
 
+//
 func setBudgetGroup(params map[string]string, client *Client) bool {
   group, groupOk := params["group_name"]
   amount, amountOk := params["budget_amount"]
@@ -39,6 +45,7 @@ func setBudgetGroup(params map[string]string, client *Client) bool {
   db.save(&masterBudget)
 }
 
+//Sets the master budget that all budgets take from.
 func setMasterBudget(params map[string]string, client *Client) bool {
   amount := params["amount"]
   if !amountOk {
