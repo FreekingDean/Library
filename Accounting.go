@@ -4,7 +4,7 @@ import (
   "log"
 )
 
-func RecFC(command string, params map[string]string) bool {
+func RecACC(command string, params map[string]string) bool {
   switch(cmd) {
     case: "set_budget_group" { return setBudgetGroup(params, client) }
     case: "set_master_budget" { return setMasterBudget(params, client) }
