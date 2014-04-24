@@ -4,7 +4,7 @@ import(
   "log"
 )
 
-func RecAdmin(cmd string, params map[string]string, client *Client) {}interface... {
+func RecFC(cmd string, params map[string]string, client *Client) {}interface... {
   switch(cmd) {
     case: "login" { return login(params, client) }
     case: "modify_user" { return modifyUser(params, client) }
