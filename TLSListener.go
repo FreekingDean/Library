@@ -27,7 +27,7 @@ func main() {
   connections = make(map[string]*tls.Conn)
 	s = &gotWrap.Server {
 		Protocol: *protocol,
-		ListenerAddr: *addr+":"+*port,
+		ListnerAddr: *addr+":"+*port,
 		PemFile: *pem,
 		KeyFile: *key,
 		MessageRec: recMsg,
@@ -39,7 +39,7 @@ func main() {
 //the command to the MsgMultiplexer.
 func recMsg(tlscon *tls.Conn, msg string) {
   if val, ok := connections[tlscon.RemoteAddr().String()]; !ok {
-    connections[tlscon.RemoteAddr().String()] = &Client{
+    connections[tlscon.RemotAddr().String()] = &Client{
       Conn: tlscon,
       Authed: false,
     }
