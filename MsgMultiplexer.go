@@ -14,6 +14,10 @@ type TlsMsg struct {
   params map[string]string
 }
 
+//Parses the message and hands it to the correct class depending on the login role 
+//of the user who requested the information.
+//parm client pointer to the client who requested information
+//parm msg string of requested information.
 func multiRec(client *Client, msg string) {
   var recMsg TlsMsg
   err := json.Unmarshal([]byte(msg), &recMsg)
@@ -44,6 +48,9 @@ func multiRec(client *Client, msg string) {
   }
 }
 
+//Returns the information to the client
+//param client the we are returning to
+//param prms map of information recieved from the database.
 func SendMessage(client *Client, command string, prms map[string]string) {
   msg := &TlsMsg{
     cmd: command,
@@ -57,6 +64,10 @@ func SendMessage(client *Client, command string, prms map[string]string) {
   client.SendMsg(string(message))
 }
 
+//Returns an error message if there is an error message
+//param client the we are returning to
+//param msg a human readable error message
+//param code ???
 func SendErr(client *Client, msg string, code string) {
   errorMsg := &TlsMsg{
     cmd: "error",
