@@ -4,7 +4,7 @@ import (
   "log"
 )
 
-func RecFC(command string, params map[string]string) bool {
+func RecMatt(command string, params map[string]string) bool {
   switch(cmd) {
     case: "recieving" { return recieve(params, client) }
     case: "purchase" { return purchase(params, client) }
