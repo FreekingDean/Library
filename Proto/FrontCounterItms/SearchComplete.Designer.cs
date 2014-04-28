@@ -29,23 +29,20 @@
         private void InitializeComponent()
         {
             this.lstBook = new System.Windows.Forms.ListBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.lblAuthor = new System.Windows.Forms.Label();
+            this.lblISBN = new System.Windows.Forms.Label();
+            this.lblBarcode = new System.Windows.Forms.Label();
+            this.lblDescription = new System.Windows.Forms.Label();
             this.btnCheck = new System.Windows.Forms.Button();
             this.btnReserve = new System.Windows.Forms.Button();
             this.btnChangeStock = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // lstBook
             // 
             this.lstBook.FormattingEnabled = true;
-            this.lstBook.ItemHeight = 16;
             this.lstBook.Items.AddRange(new object[] {
             "Sample Book",
             "Sample Book",
@@ -65,77 +62,61 @@
             "Sample Book",
             "Sample Book",
             "Sample Book"});
-            this.lstBook.Location = new System.Drawing.Point(17, 16);
-            this.lstBook.Margin = new System.Windows.Forms.Padding(4);
+            this.lstBook.Location = new System.Drawing.Point(13, 13);
             this.lstBook.Name = "lstBook";
-            this.lstBook.Size = new System.Drawing.Size(153, 164);
+            this.lstBook.Size = new System.Drawing.Size(116, 134);
             this.lstBook.TabIndex = 0;
             // 
-            // pictureBox1
+            // lblTitle
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(181, 16);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(155, 165);
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Location = new System.Drawing.Point(135, 17);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(55, 13);
+            this.lblTitle.TabIndex = 2;
+            this.lblTitle.Text = "Book Title";
             // 
-            // label1
+            // lblAuthor
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(345, 16);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(71, 17);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Book Title";
+            this.lblAuthor.AutoSize = true;
+            this.lblAuthor.Location = new System.Drawing.Point(134, 30);
+            this.lblAuthor.Name = "lblAuthor";
+            this.lblAuthor.Size = new System.Drawing.Size(38, 13);
+            this.lblAuthor.TabIndex = 2;
+            this.lblAuthor.Text = "Author";
             // 
-            // label2
+            // lblISBN
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(344, 32);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(50, 17);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Author";
+            this.lblISBN.AutoSize = true;
+            this.lblISBN.Location = new System.Drawing.Point(134, 43);
+            this.lblISBN.Name = "lblISBN";
+            this.lblISBN.Size = new System.Drawing.Size(32, 13);
+            this.lblISBN.TabIndex = 2;
+            this.lblISBN.Text = "ISBN";
             // 
-            // label3
+            // lblBarcode
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(344, 48);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(39, 17);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "ISBN";
+            this.lblBarcode.AutoSize = true;
+            this.lblBarcode.Location = new System.Drawing.Point(134, 56);
+            this.lblBarcode.Name = "lblBarcode";
+            this.lblBarcode.Size = new System.Drawing.Size(47, 13);
+            this.lblBarcode.TabIndex = 2;
+            this.lblBarcode.Text = "Barcode";
             // 
-            // label4
+            // lblDescription
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(344, 64);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(61, 17);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "Barcode";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(345, 80);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(129, 17);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "Short Description...";
+            this.lblDescription.AutoSize = true;
+            this.lblDescription.Location = new System.Drawing.Point(135, 69);
+            this.lblDescription.Name = "lblDescription";
+            this.lblDescription.Size = new System.Drawing.Size(97, 13);
+            this.lblDescription.TabIndex = 2;
+            this.lblDescription.Text = "Short Description...";
             // 
             // btnCheck
             // 
-            this.btnCheck.Location = new System.Drawing.Point(689, 10);
-            this.btnCheck.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCheck.Location = new System.Drawing.Point(379, 8);
             this.btnCheck.Name = "btnCheck";
-            this.btnCheck.Size = new System.Drawing.Size(155, 38);
+            this.btnCheck.Size = new System.Drawing.Size(116, 31);
             this.btnCheck.TabIndex = 3;
             this.btnCheck.Text = "Check IN/OUT";
             this.btnCheck.UseVisualStyleBackColor = true;
@@ -143,30 +124,27 @@
             // 
             // btnReserve
             // 
-            this.btnReserve.Location = new System.Drawing.Point(689, 55);
-            this.btnReserve.Margin = new System.Windows.Forms.Padding(4);
+            this.btnReserve.Location = new System.Drawing.Point(379, 45);
             this.btnReserve.Name = "btnReserve";
-            this.btnReserve.Size = new System.Drawing.Size(155, 38);
+            this.btnReserve.Size = new System.Drawing.Size(116, 31);
             this.btnReserve.TabIndex = 3;
             this.btnReserve.Text = "Reserve";
             this.btnReserve.UseVisualStyleBackColor = true;
             // 
             // btnChangeStock
             // 
-            this.btnChangeStock.Location = new System.Drawing.Point(689, 101);
-            this.btnChangeStock.Margin = new System.Windows.Forms.Padding(4);
+            this.btnChangeStock.Location = new System.Drawing.Point(379, 82);
             this.btnChangeStock.Name = "btnChangeStock";
-            this.btnChangeStock.Size = new System.Drawing.Size(155, 38);
+            this.btnChangeStock.Size = new System.Drawing.Size(116, 31);
             this.btnChangeStock.TabIndex = 3;
             this.btnChangeStock.Text = "Change Stock";
             this.btnChangeStock.UseVisualStyleBackColor = true;
             // 
             // btnBack
             // 
-            this.btnBack.Location = new System.Drawing.Point(689, 143);
-            this.btnBack.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBack.Location = new System.Drawing.Point(379, 116);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(155, 38);
+            this.btnBack.Size = new System.Drawing.Size(116, 31);
             this.btnBack.TabIndex = 3;
             this.btnBack.Text = "Back";
             this.btnBack.UseVisualStyleBackColor = true;
@@ -174,24 +152,21 @@
             // 
             // SearchComplete
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(860, 196);
+            this.ClientSize = new System.Drawing.Size(500, 159);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnChangeStock);
             this.Controls.Add(this.btnReserve);
             this.Controls.Add(this.btnCheck);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.lblDescription);
+            this.Controls.Add(this.lblBarcode);
+            this.Controls.Add(this.lblISBN);
+            this.Controls.Add(this.lblAuthor);
+            this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.lstBook);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "SearchComplete";
             this.Text = "SearchComplete";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -200,12 +175,11 @@
         #endregion
 
         private System.Windows.Forms.ListBox lstBook;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.Label lblAuthor;
+        private System.Windows.Forms.Label lblISBN;
+        private System.Windows.Forms.Label lblBarcode;
+        private System.Windows.Forms.Label lblDescription;
         private System.Windows.Forms.Button btnCheck;
         private System.Windows.Forms.Button btnReserve;
         private System.Windows.Forms.Button btnChangeStock;

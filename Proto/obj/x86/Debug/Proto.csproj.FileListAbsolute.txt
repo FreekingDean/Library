@@ -86,3 +86,5 @@ C:\Users\galvin30\Desktop\LibraryStuffs\Proto\Proto\obj\x86\Debug\Proto.csproj.G
 C:\Users\galvin30\Desktop\LibraryStuffs\Proto\Proto\obj\x86\Debug\Proto.MaterialItms.Materials.resources
 C:\Users\galvin30\Desktop\Library\Proto\obj\x86\Debug\Proto.exe
 C:\Users\galvin30\Desktop\Library\Proto\obj\x86\Debug\Proto.pdb
+C:\Users\galmj28\Desktop\project\Library\Proto\obj\x86\Debug\Proto.exe
+C:\Users\galmj28\Desktop\project\Library\Proto\obj\x86\Debug\Proto.pdb

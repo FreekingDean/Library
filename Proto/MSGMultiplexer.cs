@@ -7,6 +7,12 @@ namespace Proto
 {
     class MSGMultiplexer
     {
+        /// <summary>
+        /// Serializes to JSON (Java Script Object Notation) string to send over the wire
+        /// to the sever.
+        /// </summary>
+        /// <param name="map">map of param names and values</param>
+        /// <returns>String represtening a JSON serialization</returns>
         public static string mapToJson(Dictionary<string, string> map)
         {
             string output = "{";
@@ -19,6 +25,12 @@ namespace Proto
             Console.WriteLine(output);
             return output;
         }
+
+        /// <summary>
+        /// Deserializing a json serialized message from the server
+        /// </summary>
+        /// <param name="json">the json serialized message from the server</param>
+        /// <returns>map of param names and values.</returns>
         public static Dictionary<string, string> jsonToMap(string json)
         {
             Dictionary<string, string> map = new Dictionary<string,string>();
