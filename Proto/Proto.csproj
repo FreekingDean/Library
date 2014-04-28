@@ -128,6 +128,12 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TLSListener.cs" />
+    <EmbeddedResource Include="AccountingItms\Accounting.resx">
+      <DependentUpon>Accounting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminItms\Admin.resx">
+      <DependentUpon>Admin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ErrorMsg.resx">
       <DependentUpon>ErrorMsg.cs</DependentUpon>
     </EmbeddedResource>

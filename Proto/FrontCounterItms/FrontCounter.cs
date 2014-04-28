@@ -11,8 +11,10 @@ namespace Proto.FrontCounter
 {
     public partial class FrontCounter : Form
     {
-        public FrontCounter()
+        Form callebackForm;
+        public FrontCounter(Form callerForm)
         {
+            callebackForm = callerForm;
             InitializeComponent();
         }
 
@@ -41,6 +43,11 @@ namespace Proto.FrontCounter
         {
             ManageCustomer mc = new ManageCustomer();
             mc.Show();
+        }
+
+        private void FrontCounter_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

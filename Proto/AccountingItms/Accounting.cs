@@ -11,9 +11,16 @@ namespace Proto.AccountingItms
 {
     public partial class Accounting : Form
     {
-        public Accounting()
+        Form callbackForm;
+        public Accounting(Form callerForm)
         {
+            callbackForm = callerForm;
             InitializeComponent();
+        }
+
+        private void Accounting_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

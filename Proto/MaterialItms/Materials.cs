@@ -11,8 +11,10 @@ namespace Proto.MaterialItms
 {
     public partial class Materials : Form
     {
-        public Materials()
+        Form callbackForm;
+        public Materials(Form callerForm)
         {
+            callbackForm = callerForm;
             InitializeComponent();
         }
 

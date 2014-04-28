@@ -59,7 +59,6 @@
             this.btnSave.TabIndex = 2;
             this.btnSave.Text = "Save/Add New";
             this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // textBox1
             // 

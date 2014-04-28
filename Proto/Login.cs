@@ -38,6 +38,13 @@ namespace Proto
             Console.WriteLine(toSend);
             TLSListener.SendMessage(toSend);
             login = TLSListener.ReadMessage();
+            login["top_cmd"] = "admin";
+            login["cmd"] = "backup_system";
+            login["password"] = txtPasscode.Text;
+            toSend = MSGMultiplexer.mapToJson(login);
+            Console.WriteLine(toSend);
+            TLSListener.SendMessage(toSend);
+            login = TLSListener.ReadMessage();
             if (login["top_cmd"] == "logged_in")
             {
                 MainMenu mm = new MainMenu(Int32.Parse(login["role"]));

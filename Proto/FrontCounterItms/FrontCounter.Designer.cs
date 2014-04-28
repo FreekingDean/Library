@@ -36,10 +36,9 @@
             // 
             // btnManageBook
             // 
-            this.btnManageBook.Location = new System.Drawing.Point(16, 15);
-            this.btnManageBook.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnManageBook.Location = new System.Drawing.Point(12, 12);
             this.btnManageBook.Name = "btnManageBook";
-            this.btnManageBook.Size = new System.Drawing.Size(347, 73);
+            this.btnManageBook.Size = new System.Drawing.Size(260, 59);
             this.btnManageBook.TabIndex = 1;
             this.btnManageBook.Text = "Manage Book";
             this.btnManageBook.UseVisualStyleBackColor = true;
@@ -47,10 +46,9 @@
             // 
             // btnManageCustomer
             // 
-            this.btnManageCustomer.Location = new System.Drawing.Point(16, 175);
-            this.btnManageCustomer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnManageCustomer.Location = new System.Drawing.Point(12, 142);
             this.btnManageCustomer.Name = "btnManageCustomer";
-            this.btnManageCustomer.Size = new System.Drawing.Size(347, 73);
+            this.btnManageCustomer.Size = new System.Drawing.Size(260, 59);
             this.btnManageCustomer.TabIndex = 1;
             this.btnManageCustomer.Text = "Manage Customer";
             this.btnManageCustomer.UseVisualStyleBackColor = true;
@@ -58,20 +56,18 @@
             // 
             // btnReports
             // 
-            this.btnReports.Location = new System.Drawing.Point(16, 255);
-            this.btnReports.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnReports.Location = new System.Drawing.Point(12, 207);
             this.btnReports.Name = "btnReports";
-            this.btnReports.Size = new System.Drawing.Size(347, 73);
+            this.btnReports.Size = new System.Drawing.Size(260, 59);
             this.btnReports.TabIndex = 1;
             this.btnReports.Text = "Reports";
             this.btnReports.UseVisualStyleBackColor = true;
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(16, 95);
-            this.btnSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSearch.Location = new System.Drawing.Point(12, 77);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(347, 73);
+            this.btnSearch.Size = new System.Drawing.Size(260, 59);
             this.btnSearch.TabIndex = 1;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
@@ -79,16 +75,16 @@
             // 
             // FrontCounter
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(381, 342);
+            this.ClientSize = new System.Drawing.Size(286, 278);
             this.Controls.Add(this.btnReports);
             this.Controls.Add(this.btnManageCustomer);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.btnManageBook);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FrontCounter";
             this.Text = "FrontCounter";
+            this.Load += new System.EventHandler(this.FrontCounter_Load);
             this.ResumeLayout(false);
 
         }

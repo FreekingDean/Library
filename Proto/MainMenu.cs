@@ -12,8 +12,16 @@ namespace Proto
     public partial class MainMenu : Form
     {
         int userRole;
+        FrontCounter.FrontCounter fcMenu;
+        MaterialItms.Materials matMenu;
+        AccountingItms.Accounting accMenu;
+        AdminItms.Admin adMenu;
         public MainMenu(int role)
         {
+            fcMenu = new FrontCounter.FrontCounter(this);
+            matMenu = new MaterialItms.Materials(this);
+            accMenu = new AccountingItms.Accounting(this);
+            adMenu = new AdminItms.Admin(this);
             userRole = role;
             InitializeComponent();
         }
@@ -23,9 +31,26 @@ namespace Proto
         /// </summary>
         private void btnFC_Click(object sender, EventArgs e)
         {
-            FrontCounter.FrontCounter fc = new FrontCounter.FrontCounter();
             this.Hide();
-            fc.Show();
+            fcMenu.Show(this);
+        }
+
+        private void btnMat_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            matMenu.Show();
+        }
+
+        private void btnAcc_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            accMenu.Show();
+        }
+
+        private void btnAdmin_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            adMenu.Show();
         }
 
         private void btnLogOut_Click(object sender, EventArgs e)
@@ -53,27 +78,6 @@ namespace Proto
                 default:
                     break;
             }
-        }
-
-        private void btnMat_Click(object sender, EventArgs e)
-        {
-            MaterialItms.Materials matMenu = new MaterialItms.Materials();
-            this.Hide();
-            matMenu.Show();
-        }
-
-        private void btnAcc_Click(object sender, EventArgs e)
-        {
-            AccountingItms.Accounting accMenu = new AccountingItms.Accounting();
-            this.Hide();
-            accMenu.Show();
-        }
-
-        private void btnAdmin_Click(object sender, EventArgs e)
-        {
-            AdminItms.Admin adMenu = new AdminItms.Admin();
-            this.Hide();
-            adMenu.Show();
         }
     }
 }
