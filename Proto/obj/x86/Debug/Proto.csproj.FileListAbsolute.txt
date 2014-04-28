@@ -84,3 +84,5 @@ C:\Users\galvin30\Desktop\LibraryStuffs\Proto\Proto\obj\x86\Debug\Proto.MainMenu
 C:\Users\galvin30\Desktop\LibraryStuffs\Proto\Proto\obj\x86\Debug\Proto.Properties.Resources.resources
 C:\Users\galvin30\Desktop\LibraryStuffs\Proto\Proto\obj\x86\Debug\Proto.csproj.GenerateResource.Cache
 C:\Users\galvin30\Desktop\LibraryStuffs\Proto\Proto\obj\x86\Debug\Proto.MaterialItms.Materials.resources
+C:\Users\galvin30\Desktop\Library\Proto\obj\x86\Debug\Proto.exe
+C:\Users\galvin30\Desktop\Library\Proto\obj\x86\Debug\Proto.pdb
