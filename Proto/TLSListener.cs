@@ -6,21 +6,30 @@ using System.Text;
 using System.IO;
 using System.Collections.Generic;
 
-//TEST EDIT
+
 
 namespace Proto
 {
     public class TLSListener
     {
         static NetworkStream libStream;
+
+        /// <summary>
+        /// simple method that closes the network stream.
+        /// </summary>
         public static void Close()
         {
             libStream.Close();
         }
+
+        /// <summary>
+        /// Create a TCP/IP client socket.
+        /// </summary>
+        /// <param name="machineName">host running the server application</param>
+        /// <param name="port">Port the host is listening on, default is 8000</param>
         public static void RunClient(string machineName, int port)
         {
-            /*Create a TCP/IP client socket. 
-            // machineName is the host running the server application.
+            /*             
             try
             {
                 TcpClient client = new TcpClient(machineName, port);
@@ -55,12 +64,22 @@ namespace Proto
             // Close the client connection.
             Console.WriteLine("Client closed.");
         }
+
+        /// <summary>
+        /// Sends message to server
+        /// </summary>
+        /// <param name="msg">The message to be sent to the server</param>
         public static void SendMessage(string msg)
         {
             byte[] messsage = Encoding.UTF8.GetBytes(msg);
             libStream.Write(messsage, 0, messsage.Length);
             libStream.Flush();
         }
+
+        /// <summary>
+        /// Reads a message back from the server
+        /// </summary>
+        /// <returns>A map of param names and values</returns>
         public static Dictionary<string, string> ReadMessage()
         {
             byte[] buffer = new byte[1024];
@@ -82,6 +101,12 @@ namespace Proto
             }
             return map;
         }
+
+        /// <summary>
+        /// Starts the conection to the remote server.
+        /// </summary>
+        /// <param name="machineName">The host machine's IP adress.</param>
+        /// <param name="port">The port the host machine is listening on.</param>
         public static void startClient(string machineName, int port)
         {
             TLSListener.RunClient(machineName, port);

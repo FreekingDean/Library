@@ -86,6 +86,7 @@ C:\Users\galvin30\Desktop\LibraryStuffs\Proto\Proto\obj\x86\Debug\Proto.csproj.G
 C:\Users\galvin30\Desktop\LibraryStuffs\Proto\Proto\obj\x86\Debug\Proto.MaterialItms.Materials.resources
 C:\Users\galvin30\Desktop\Library\Proto\obj\x86\Debug\Proto.exe
 C:\Users\galvin30\Desktop\Library\Proto\obj\x86\Debug\Proto.pdb
+<<<<<<< HEAD
 C:\Users\galvin30\Desktop\Library\Proto\obj\x86\Debug\Proto.csprojResolveAssemblyReference.cache
 C:\Users\galvin30\Desktop\Library\Proto\obj\x86\Debug\Proto.AdminItms.Admin.resources
 C:\Users\galvin30\Desktop\Library\Proto\obj\x86\Debug\Proto.Error_Msg.resources
@@ -104,3 +105,7 @@ C:\Users\galvin30\Desktop\Library\Proto\obj\x86\Debug\Proto.csproj.GenerateResou
 C:\Users\galvin30\Desktop\Library\Proto\obj\x86\Debug\Proto.AccountingItms.Accounting.resources
 C:\Users\galvin30\Desktop\Library\Proto\bin\Debug\Proto.exe
 C:\Users\galvin30\Desktop\Library\Proto\bin\Debug\Proto.pdb
+=======
+C:\Users\galmj28\Desktop\project\Library\Proto\obj\x86\Debug\Proto.exe
+C:\Users\galmj28\Desktop\project\Library\Proto\obj\x86\Debug\Proto.pdb
+>>>>>>> b083bab7830e3f49034b332f7e7ae64bf82d2962
