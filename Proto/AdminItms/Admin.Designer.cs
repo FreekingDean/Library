@@ -61,6 +61,7 @@
             this.btnRecieve.TabIndex = 6;
             this.btnRecieve.Text = "Backup";
             this.btnRecieve.UseVisualStyleBackColor = true;
+            this.btnRecieve.Click += new System.EventHandler(this.btnRecieve_Click);
             // 
             // btnMngUser
             // 

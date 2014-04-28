@@ -58,6 +58,12 @@
     <Compile Include="AdminItms\Admin.Designer.cs">
       <DependentUpon>Admin.cs</DependentUpon>
     </Compile>
+    <Compile Include="AdminItms\ManageUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminItms\ManageUser.Designer.cs">
+      <DependentUpon>ManageUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="ErrorMsg.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,6 +139,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdminItms\Admin.resx">
       <DependentUpon>Admin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminItms\ManageUser.resx">
+      <DependentUpon>ManageUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ErrorMsg.resx">
       <DependentUpon>ErrorMsg.cs</DependentUpon>

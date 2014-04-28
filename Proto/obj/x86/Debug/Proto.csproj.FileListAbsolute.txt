@@ -109,3 +109,4 @@ C:\Users\galvin30\Desktop\Library\Proto\bin\Debug\Proto.pdb
 C:\Users\galmj28\Desktop\project\Library\Proto\obj\x86\Debug\Proto.exe
 C:\Users\galmj28\Desktop\project\Library\Proto\obj\x86\Debug\Proto.pdb
 >>>>>>> b083bab7830e3f49034b332f7e7ae64bf82d2962
+C:\Users\galvin30\Desktop\Library\Proto\obj\x86\Debug\Proto.AdminItms.ManageUser.resources

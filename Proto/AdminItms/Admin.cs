@@ -11,6 +11,7 @@ namespace Proto.AdminItms
 {
     public partial class Admin : Form
     {
+        Form userForm;
         Form callbackForm;
         public Admin(Form callerForm)
         {
@@ -20,7 +21,7 @@ namespace Proto.AdminItms
 
         private void btnMngUser_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void btnGoBack_Click(object sender, EventArgs e)
@@ -30,6 +31,15 @@ namespace Proto.AdminItms
         }
 
         private void btnVendor_Click(object sender, EventArgs e)
+        {
+            Dictionary<string, string> backup = new Dictionary<string, string>();
+            backup["top_cmd"] = "admin";
+            backup["cmd"] = "restore_system";
+            string toSend = MSGMultiplexer.mapToJson(backup);
+            TLSListener.SendMessage(toSend);
+        }
+
+        private void btnRecieve_Click(object sender, EventArgs e)
         {
             Dictionary<string, string> backup = new Dictionary<string, string>();
             backup["top_cmd"] = "admin";
