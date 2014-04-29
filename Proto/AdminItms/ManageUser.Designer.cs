@@ -37,6 +37,8 @@
             this.txtRole = new System.Windows.Forms.TextBox();
             this.txtFirstName = new System.Windows.Forms.TextBox();
             this.txtLastName = new System.Windows.Forms.TextBox();
+            this.txtPasswordInput = new System.Windows.Forms.TextBox();
+            this.txtConformation = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // button1
@@ -119,12 +121,30 @@
             this.txtLastName.Text = "Last Name";
             this.txtLastName.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
+            // txtPasswordInput
+            // 
+            this.txtPasswordInput.Location = new System.Drawing.Point(225, 38);
+            this.txtPasswordInput.Name = "txtPasswordInput";
+            this.txtPasswordInput.Size = new System.Drawing.Size(100, 20);
+            this.txtPasswordInput.TabIndex = 1;
+            this.txtPasswordInput.Text = "Password";
+            // 
+            // txtConformation
+            // 
+            this.txtConformation.Location = new System.Drawing.Point(331, 39);
+            this.txtConformation.Name = "txtConformation";
+            this.txtConformation.Size = new System.Drawing.Size(100, 20);
+            this.txtConformation.TabIndex = 1;
+            this.txtConformation.Text = "Password-Repeat";
+            // 
             // ManageUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(460, 121);
             this.Controls.Add(this.txtRole);
+            this.Controls.Add(this.txtConformation);
+            this.Controls.Add(this.txtPasswordInput);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.txtLastName);
@@ -135,6 +155,7 @@
             this.Controls.Add(this.button1);
             this.Name = "ManageUser";
             this.Text = "ManageUser";
+            this.Load += new System.EventHandler(this.ManageUser_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -151,5 +172,7 @@
         private System.Windows.Forms.TextBox txtRole;
         private System.Windows.Forms.TextBox txtFirstName;
         private System.Windows.Forms.TextBox txtLastName;
+        private System.Windows.Forms.TextBox txtPasswordInput;
+        private System.Windows.Forms.TextBox txtConformation;
     }
 }

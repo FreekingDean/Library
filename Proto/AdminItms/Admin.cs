@@ -11,17 +11,19 @@ namespace Proto.AdminItms
 {
     public partial class Admin : Form
     {
-        Form userForm;
+        ManageUser userForm;
         Form callbackForm;
         public Admin(Form callerForm)
         {
             callbackForm = callerForm;
+            userForm = new ManageUser(this);
             InitializeComponent();
         }
 
         private void btnMngUser_Click(object sender, EventArgs e)
         {
-            
+            this.Hide();
+            userForm.Show();
         }
 
         private void btnGoBack_Click(object sender, EventArgs e)
