@@ -1,30 +1,31 @@
 package main
 
 import (
-  "log"
+  //"log"
+  "strconv"
 )
 
-//Recieves a command string and chooses which function to initiate
-//based on the string
-//
-//parm command String read to figure out what command to use
-//parm params is a list of all available strings to be used in later commands for comparisons 
-func RecAcc(command string, params map[string]string) bool {
-  switch(cmd) {
-    case: "set_budget_group" { return setBudgetGroup(params, client) }
-    case: "set_master_budget" { return setMasterBudget(params, client) }
-    case: "manage_wallet" { return manageWallet(params, client) }
-    case: "report" { return acReport(params, client) }
+func RecAcc(command string, params map[string]string, client *Client) bool {
+  switch(command) {
+    case "set_budget_group": { return setBudgetGroup(params, client) }
+    case "set_master_budget": { return setMasterBudget(params, client) }
+    case "manage_wallet": { return manageWallet(params, client) }
+    case "report": { return acReport(params, client) }
     default: SendErr(client, "No command/commmand not recognized", "admin_cmd")
   }
-  return nil
+  return false
 }
 
-//
 func setBudgetGroup(params map[string]string, client *Client) bool {
   group, groupOk := params["group_name"]
-  amount, amountOk := params["budget_amount"]
-  if !groupOk {
+  amountS, amountOk := params["budget_amount"]
+  amountI, err := strconv.Atoi(amountS)
+  if err != nil {
+    SendErr(client, "Amount not number!", "bg_number")
+    return false
+  }
+  amount := int64(amountI)
+  if !groupOk || !amountOk {
     SendErr(client, "Need more info", "bg_info")
     return false
   }
@@ -42,12 +43,22 @@ func setBudgetGroup(params map[string]string, client *Client) bool {
   budget.Name = group
   budget.Amount = amount
   db.Save(&budget)
-  db.save(&masterBudget)
+  db.Save(&masterBudget)
+  return true
 }
 
-//Sets the master budget that all budgets take from.
 func setMasterBudget(params map[string]string, client *Client) bool {
-  amount := params["amount"]
+  amountS, amountOk := params["amount"]
+  if !amountOk {
+    SendErr(client, "Need more info", "mb_info")
+    return false
+  }
+  amountI, err := strconv.Atoi(amountS)
+  if err != nil {
+    SendErr(client, "Amount not number!", "bg_number")
+    return false
+  }
+  amount := int64(amountI)
   if !amountOk {
     SendErr(client, "Need more info", "mb_info")
     return false
@@ -63,18 +74,30 @@ func setMasterBudget(params map[string]string, client *Client) bool {
 }
 
 func manageWallet(params map[string]string, client *Client) bool {
-  amount, amountOk := params["amount"]
+  amountS, amountOk := params["amount"]
   reason, reasonOk := params["reason"]
   if !amountOk || !reasonOk {
     SendErr(client, "Need more info", "mw_info")
     return false
   }
+  amountI, err := strconv.Atoi(amountS)
+  if err != nil {
+    SendErr(client, "Amount not number!", "bg_number")
+    return false
+  }
+  amount := int64(amountI)
   wallet := GetLastWallet()
+  newTot := wallet.RunningTotal + amount
   newWallet := Wallet{
-    RunningTotal: wallet.RunningTotal += amount
-    Amount: amount
-    Reason: reason
+    RunningTotal: newTot,
+    Amount: amount,
+    Reason: reason,
   }
   db.Save(&newWallet)
+  return true
+}
+
+//TODO - IMPLEMENT
+func acReport(params map[string]string, client *Client) bool {
   return true
 }
