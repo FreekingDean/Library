@@ -32,6 +32,16 @@ namespace Proto.AdminItms
             if (!addMode )
             {
                 command["user_id"] = txtUserId.Text;
+                if (txtPasswordInput.Text == txtConformation.Text)
+                {
+                    command["new_password"] = txtConformation.Text;
+                }
+                else
+                {
+                    Error_Msg em = new Error_Msg("Password & confirmation must match", "31001");
+                    em.Show();
+                    return;
+                }
             }
             command["username"] = txtUsername.Text;
             command["password"] = txtPassword.Text;
@@ -77,6 +87,29 @@ namespace Proto.AdminItms
             txtConformation.Visible = false;
             button2.Text = "Add";
             addMode = true;
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            callbackForm.Show();
+            this.Close();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Dictionary<string, string> command = new Dictionary<string, string>();
+            command["top_cmd"] = "admin";
+            command["cmd"] = "delete_user";
+            command["user_id"] = txtUserId.Text;
+            command["password"] = txtPassword.Text;
+            string toSend = MSGMultiplexer.mapToJson(command);
+            TLSListener.SendMessage(toSend);
+            command = TLSListener.ReadMessage();
+            if (command["top_cmd"] == "success")
+            {
+                callbackForm.Show();
+                this.Close();
+            }
         }
     }
 }
