@@ -11,8 +11,11 @@ namespace Proto.AdminItms
 {
     public partial class ManageUser : Form
     {
-        public ManageUser()
+        Form callbackForm;
+        bool addMode;
+        public ManageUser(Form callerForm)
         {
+            callbackForm = callerForm;
             InitializeComponent();
         }
 
@@ -23,6 +26,36 @@ namespace Proto.AdminItms
 
         private void button2_Click(object sender, EventArgs e)
         {
+            Dictionary<string, string> command = new Dictionary<string, string>();
+            command["top_cmd"] = "admin";
+            command["cmd"] = "modify_user";
+            if (!addMode )
+            {
+                command["user_id"] = txtUserId.Text;
+                if (txtPasswordInput.Text == txtConformation.Text)
+                {
+                    command["new_password"] = txtConformation.Text;
+                }
+                else
+                {
+                    Error_Msg em = new Error_Msg("Password & confirmation must match", "31001");
+                    em.Show();
+                    return;
+                }
+            }
+            command["username"] = txtUsername.Text;
+            command["password"] = txtPassword.Text;
+            command["role"] = txtRole.Text;
+            command["first_name"] = txtFirstName.Text;
+            command["last_name"] = txtLastName.Text;
+            string toSend = MSGMultiplexer.mapToJson(command);
+            TLSListener.SendMessage(toSend);
+            command = TLSListener.ReadMessage();
+            if (command["top_cmd"] == "success")
+            {
+                callbackForm.Show();
+                this.Close();
+            }
 
         }
 
@@ -35,12 +68,47 @@ namespace Proto.AdminItms
             string toSend = MSGMultiplexer.mapToJson(command);
             TLSListener.SendMessage(toSend);
             command = TLSListener.ReadMessage();
-            if (command["top_cmd"] != "err")
+            if (command["top_cmd"] != "error")
             {
                 txtFirstName.Text = command["first_name"];
                 txtLastName.Text = command["last_name"];
                 txtUsername.Text = command["username"];
                 txtRole.Text = command["role"];
+                txtPasswordInput.Visible = true;
+                txtConformation.Visible = true;
+                btnAdd.Text = "Edit";
+                addMode = false;
+            }
+        }
+
+        private void ManageUser_Load(object sender, EventArgs e)
+        {
+            txtPasswordInput.Visible = false;
+            txtConformation.Visible = false;
+            btnAdd.Text = "Add";
+            addMode = true;
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            callbackForm.Show();
+            this.Close();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Dictionary<string, string> command = new Dictionary<string, string>();
+            command["top_cmd"] = "admin";
+            command["cmd"] = "delete_user";
+            command["user_id"] = txtUserId.Text;
+            command["password"] = txtPassword.Text;
+            string toSend = MSGMultiplexer.mapToJson(command);
+            TLSListener.SendMessage(toSend);
+            command = TLSListener.ReadMessage();
+            if (command["top_cmd"] == "success")
+            {
+                callbackForm.Show();
+                this.Close();
             }
         }
     }

@@ -86,7 +86,6 @@ C:\Users\galvin30\Desktop\LibraryStuffs\Proto\Proto\obj\x86\Debug\Proto.csproj.G
 C:\Users\galvin30\Desktop\LibraryStuffs\Proto\Proto\obj\x86\Debug\Proto.MaterialItms.Materials.resources
 C:\Users\galvin30\Desktop\Library\Proto\obj\x86\Debug\Proto.exe
 C:\Users\galvin30\Desktop\Library\Proto\obj\x86\Debug\Proto.pdb
-<<<<<<< HEAD
 C:\Users\galvin30\Desktop\Library\Proto\obj\x86\Debug\Proto.csprojResolveAssemblyReference.cache
 C:\Users\galvin30\Desktop\Library\Proto\obj\x86\Debug\Proto.AdminItms.Admin.resources
 C:\Users\galvin30\Desktop\Library\Proto\obj\x86\Debug\Proto.Error_Msg.resources
@@ -105,10 +104,49 @@ C:\Users\galvin30\Desktop\Library\Proto\obj\x86\Debug\Proto.csproj.GenerateResou
 C:\Users\galvin30\Desktop\Library\Proto\obj\x86\Debug\Proto.AccountingItms.Accounting.resources
 C:\Users\galvin30\Desktop\Library\Proto\bin\Debug\Proto.exe
 C:\Users\galvin30\Desktop\Library\Proto\bin\Debug\Proto.pdb
-=======
 C:\Users\galmj28\Desktop\project\Library\Proto\obj\x86\Debug\Proto.exe
 C:\Users\galmj28\Desktop\project\Library\Proto\obj\x86\Debug\Proto.pdb
->>>>>>> b083bab7830e3f49034b332f7e7ae64bf82d2962
 C:\Users\galvin30\Desktop\Library\Proto\obj\x86\Debug\Proto.AdminItms.ManageUser.resources
+<<<<<<< HEAD
 C:\Users\Jason\Desktop\Library\Proto\obj\x86\Debug\Proto.exe
 C:\Users\Jason\Desktop\Library\Proto\obj\x86\Debug\Proto.pdb
+=======
+C:\Users\bananaboy\Desktop\Library\Proto\obj\x86\Debug\Proto.exe
+C:\Users\bananaboy\Desktop\Library\Proto\obj\x86\Debug\Proto.pdb
+C:\Users\bananaboy\Desktop\Library\Proto\bin\Debug\Proto.exe
+C:\Users\bananaboy\Desktop\Library\Proto\bin\Debug\Proto.pdb
+C:\Users\bananaboy\Desktop\Library\Proto\obj\x86\Debug\Proto.csprojResolveAssemblyReference.cache
+C:\Users\bananaboy\Desktop\Library\Proto\obj\x86\Debug\Proto.AccountingItms.Accounting.resources
+C:\Users\bananaboy\Desktop\Library\Proto\obj\x86\Debug\Proto.AdminItms.Admin.resources
+C:\Users\bananaboy\Desktop\Library\Proto\obj\x86\Debug\Proto.AdminItms.ManageUser.resources
+C:\Users\bananaboy\Desktop\Library\Proto\obj\x86\Debug\Proto.Error_Msg.resources
+C:\Users\bananaboy\Desktop\Library\Proto\obj\x86\Debug\Proto.Login.resources
+C:\Users\bananaboy\Desktop\Library\Proto\obj\x86\Debug\Proto.CheckOutBook.resources
+C:\Users\bananaboy\Desktop\Library\Proto\obj\x86\Debug\Proto.FrontCounter.FoundCustomer.resources
+C:\Users\bananaboy\Desktop\Library\Proto\obj\x86\Debug\Proto.FrontCounter.FrontCounter.resources
+C:\Users\bananaboy\Desktop\Library\Proto\obj\x86\Debug\Proto.FrontCounter.ManageCustomer.resources
+C:\Users\bananaboy\Desktop\Library\Proto\obj\x86\Debug\Proto.FrontCounterItms.MngCust.resources
+C:\Users\bananaboy\Desktop\Library\Proto\obj\x86\Debug\Proto.FrontCounter.Search.resources
+C:\Users\bananaboy\Desktop\Library\Proto\obj\x86\Debug\Proto.FrontCounter.SearchComplete.resources
+C:\Users\bananaboy\Desktop\Library\Proto\obj\x86\Debug\Proto.MainMenu.resources
+C:\Users\bananaboy\Desktop\Library\Proto\obj\x86\Debug\Proto.MaterialItms.Materials.resources
+C:\Users\bananaboy\Desktop\Library\Proto\obj\x86\Debug\Proto.Properties.Resources.resources
+C:\Users\bananaboy\Desktop\Library\Proto\obj\x86\Debug\Proto.csproj.GenerateResource.Cache
+>>>>>>> 3160249021e4213cac597c4f2ebc0fa5eb52b24c
+C:\Users\Jason\Desktop\Library\Proto\obj\x86\Debug\Proto.csprojResolveAssemblyReference.cache
+C:\Users\Jason\Desktop\Library\Proto\obj\x86\Debug\Proto.AccountingItms.Accounting.resources
+C:\Users\Jason\Desktop\Library\Proto\obj\x86\Debug\Proto.AdminItms.Admin.resources
+C:\Users\Jason\Desktop\Library\Proto\obj\x86\Debug\Proto.AdminItms.ManageUser.resources
+C:\Users\Jason\Desktop\Library\Proto\obj\x86\Debug\Proto.Error_Msg.resources
+C:\Users\Jason\Desktop\Library\Proto\obj\x86\Debug\Proto.Login.resources
+C:\Users\Jason\Desktop\Library\Proto\obj\x86\Debug\Proto.CheckOutBook.resources
+C:\Users\Jason\Desktop\Library\Proto\obj\x86\Debug\Proto.FrontCounter.FoundCustomer.resources
+C:\Users\Jason\Desktop\Library\Proto\obj\x86\Debug\Proto.FrontCounter.FrontCounter.resources
+C:\Users\Jason\Desktop\Library\Proto\obj\x86\Debug\Proto.FrontCounter.ManageCustomer.resources
+C:\Users\Jason\Desktop\Library\Proto\obj\x86\Debug\Proto.FrontCounterItms.MngCust.resources
+C:\Users\Jason\Desktop\Library\Proto\obj\x86\Debug\Proto.FrontCounter.Search.resources
+C:\Users\Jason\Desktop\Library\Proto\obj\x86\Debug\Proto.FrontCounter.SearchComplete.resources
+C:\Users\Jason\Desktop\Library\Proto\obj\x86\Debug\Proto.MainMenu.resources
+C:\Users\Jason\Desktop\Library\Proto\obj\x86\Debug\Proto.MaterialItms.Materials.resources
+C:\Users\Jason\Desktop\Library\Proto\obj\x86\Debug\Proto.Properties.Resources.resources
+C:\Users\Jason\Desktop\Library\Proto\obj\x86\Debug\Proto.csproj.GenerateResource.Cache

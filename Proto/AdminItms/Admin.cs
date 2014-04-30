@@ -11,7 +11,6 @@ namespace Proto.AdminItms
 {
     public partial class Admin : Form
     {
-        Form userForm;
         Form callbackForm;
         public Admin(Form callerForm)
         {
@@ -21,13 +20,9 @@ namespace Proto.AdminItms
 
         private void btnMngUser_Click(object sender, EventArgs e)
         {
-            
-        }
-
-        private void btnGoBack_Click(object sender, EventArgs e)
-        {
+            ManageUser userForm = new ManageUser(this);
             this.Hide();
-            callbackForm.Show();
+            userForm.Show();
         }
 
         private void btnVendor_Click(object sender, EventArgs e)
@@ -46,6 +41,12 @@ namespace Proto.AdminItms
             backup["cmd"] = "backup_system";
             string toSend = MSGMultiplexer.mapToJson(backup);
             TLSListener.SendMessage(toSend);
+        }
+
+        private void btnGoBack_Click_1(object sender, EventArgs e)
+        {
+            this.Hide();
+            callbackForm.Show();
         }
     }
 }

@@ -42,6 +42,7 @@
             this.btnGoBack.TabIndex = 9;
             this.btnGoBack.Text = "Go Back";
             this.btnGoBack.UseVisualStyleBackColor = true;
+            this.btnGoBack.Click += new System.EventHandler(this.btnGoBack_Click_1);
             // 
             // btnVendor
             // 

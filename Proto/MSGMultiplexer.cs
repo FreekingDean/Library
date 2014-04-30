@@ -68,7 +68,7 @@ namespace Proto
                             ;//throw !!ERROR!!
                         break;
                     case ',':
-                        if (!inKey && !inValue && key!= "" && value!="")
+                        if (!inKey && !inValue && key!= "")
                         {
                             map[key] = value;
                             key = "";
@@ -78,7 +78,7 @@ namespace Proto
                             ;//throw !!ERROR!!
                         break;
                     case '}':
-                        if (inJson && key != "" && value != "")
+                        if (inJson && key != "")
                         {
                             map[key] = value;
                             key = "";
