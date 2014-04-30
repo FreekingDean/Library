@@ -29,7 +29,7 @@ namespace Proto
                 //return;
             }
             //TLSListener.RunClient(txtIp1.Text + "." + txtIp2.Text + "." + txtIp3.Text + "." + txtIp4.Text, Int32.Parse(txtPort.Text));
-            TLSListener.RunClient("localhost", 8000);
+            TLSListener.RunClient("150.250.191.206", 8000);
             Dictionary<string, string> login = new Dictionary<string, string>();
             login["top_cmd"] = "login";
             login["username"] = txtUser.Text;

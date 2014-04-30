@@ -41,6 +41,7 @@
             this.btnAcc.TabIndex = 3;
             this.btnAcc.Text = "Back";
             this.btnAcc.UseVisualStyleBackColor = true;
+            this.btnAcc.Click += new System.EventHandler(this.btnAcc_Click);
             // 
             // btnMat
             // 
@@ -59,6 +60,7 @@
             this.btnFC.TabIndex = 5;
             this.btnFC.Text = "Manage Budgets";
             this.btnFC.UseVisualStyleBackColor = true;
+            this.btnFC.Click += new System.EventHandler(this.btnFC_Click);
             // 
             // Accounting
             // 
@@ -70,7 +72,6 @@
             this.Controls.Add(this.btnFC);
             this.Name = "Accounting";
             this.Text = "Accounting";
-            this.Load += new System.EventHandler(this.Accounting_Load);
             this.ResumeLayout(false);
 
         }

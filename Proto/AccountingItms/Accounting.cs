@@ -18,9 +18,17 @@ namespace Proto.AccountingItms
             InitializeComponent();
         }
 
-        private void Accounting_Load(object sender, EventArgs e)
+        private void btnFC_Click(object sender, EventArgs e)
         {
+            ManageBudgets mb = new ManageBudgets(this);
+            mb.Show();
+            this.Hide();
+        }
 
+        private void btnAcc_Click(object sender, EventArgs e)
+        {
+            callbackForm.Show();
+            this.Hide();
         }
     }
 }
