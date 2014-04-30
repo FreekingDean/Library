@@ -51,7 +51,7 @@
             this.btnFind.TabIndex = 0;
             this.btnFind.Text = "Find";
             this.btnFind.UseVisualStyleBackColor = true;
-            this.btnFind.Click += new System.EventHandler(this.button1_Click);
+            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
             // 
             // btnAdd
             // 
@@ -62,7 +62,7 @@
             this.btnAdd.TabIndex = 0;
             this.btnAdd.Text = "Add/Edit";
             this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.button2_Click);
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnDelete
             // 
@@ -82,7 +82,6 @@
             this.txtUserId.Size = new System.Drawing.Size(132, 22);
             this.txtUserId.TabIndex = 1;
             this.txtUserId.Text = "User ID";
-            this.txtUserId.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // txtUsername
             // 
@@ -119,7 +118,6 @@
             this.txtFirstName.Size = new System.Drawing.Size(132, 22);
             this.txtFirstName.TabIndex = 1;
             this.txtFirstName.Text = "First Name";
-            this.txtFirstName.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // txtLastName
             // 
@@ -129,7 +127,6 @@
             this.txtLastName.Size = new System.Drawing.Size(132, 22);
             this.txtLastName.TabIndex = 1;
             this.txtLastName.Text = "Last Name";
-            this.txtLastName.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // txtPasswordInput
             // 

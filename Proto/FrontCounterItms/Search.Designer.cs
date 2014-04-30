@@ -47,7 +47,6 @@
             this.cmbField.Name = "cmbField";
             this.cmbField.Size = new System.Drawing.Size(121, 21);
             this.cmbField.TabIndex = 0;
-            this.cmbField.SelectedIndexChanged += new System.EventHandler(this.cmbField_SelectedIndexChanged);
             // 
             // label1
             // 

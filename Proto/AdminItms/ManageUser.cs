@@ -13,18 +13,26 @@ namespace Proto.AdminItms
     {
         Form callbackForm;
         bool addMode;
+
+        private void ManageUser_Load(object sender, EventArgs e)
+        {
+            txtPasswordInput.Visible = false;
+            txtConformation.Visible = false;
+            btnAdd.Text = "Add";
+            addMode = true;
+        }
+
         public ManageUser(Form callerForm)
         {
             callbackForm = callerForm;
             InitializeComponent();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Allows the user to add or edit a user.  
+        /// By default it adds if no user is found.
+        /// </summary>
+        private void btnAdd_Click(object sender, EventArgs e)
         {
             Dictionary<string, string> command = new Dictionary<string, string>();
             command["top_cmd"] = "admin";
@@ -43,6 +51,13 @@ namespace Proto.AdminItms
                     return;
                 }
             }
+
+            if (txtUsername.Text.Equals("") || txtPassword.Text.Equals("") || txtRole.Text.Equals("") ||
+                txtFirstName.Text.Equals("") || txtLastName.Text.Equals(""))
+            {
+                return;
+            }
+
             command["username"] = txtUsername.Text;
             command["password"] = txtPassword.Text;
             command["role"] = txtRole.Text;
@@ -59,8 +74,15 @@ namespace Proto.AdminItms
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Gets the information from the server and displays it on the form
+        /// </summary>
+        private void btnFind_Click(object sender, EventArgs e)
         {
+            if (txtUserId.Equals(""))
+            {
+                return;
+            }
             Dictionary<string, string> command = new Dictionary<string, string>();
             command["top_cmd"] = "admin";
             command["cmd"] = "get_user";
@@ -81,22 +103,24 @@ namespace Proto.AdminItms
             }
         }
 
-        private void ManageUser_Load(object sender, EventArgs e)
-        {
-            txtPasswordInput.Visible = false;
-            txtConformation.Visible = false;
-            btnAdd.Text = "Add";
-            addMode = true;
-        }
-
+        /// <summary>
+        /// Closes this form and shows the calling form.
+        /// </summary>
         private void btnBack_Click(object sender, EventArgs e)
         {
             callbackForm.Show();
             this.Close();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Deletes a user from the system.
+        /// </summary>
+        private void btnDelete_Click(object sender, EventArgs e)
         {
+            if (txtUserId.Text.Equals("") || txtPassword.Text.Equals(""))
+            {
+                return;
+            }
             Dictionary<string, string> command = new Dictionary<string, string>();
             command["top_cmd"] = "admin";
             command["cmd"] = "delete_user";
@@ -107,7 +131,7 @@ namespace Proto.AdminItms
             command = TLSListener.ReadMessage();
             if (command["top_cmd"] == "success")
             {
-                callbackForm.Show();
+                callbackForm.Show(); 
                 this.Close();
             }
         }
