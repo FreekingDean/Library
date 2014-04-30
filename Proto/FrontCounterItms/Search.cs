@@ -16,6 +16,10 @@ namespace Proto.FrontCounter
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Checks to see if the user typed in a search term, and selected a field before
+        ///searching the searching the DB and showing the results.
+        /// </summary>
         private void btnSearch_Click(object sender, EventArgs e)
         {
             if (txtKeyWord.Text.Equals("") || cmbField.SelectedIndex == -1)
@@ -24,11 +28,6 @@ namespace Proto.FrontCounter
             }
             SearchComplete sc = new SearchComplete();
             sc.Show();
-        }
-
-        private void cmbField_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

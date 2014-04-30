@@ -71,7 +71,6 @@
             this.label2.Size = new System.Drawing.Size(34, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "Copy:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // txtISBN
             // 
@@ -80,7 +79,6 @@
             this.txtISBN.Size = new System.Drawing.Size(153, 20);
             this.txtISBN.TabIndex = 1;
             this.txtISBN.Text = "ISBN";
-            this.txtISBN.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // txtCopy
             // 
@@ -89,7 +87,6 @@
             this.txtCopy.Size = new System.Drawing.Size(17, 20);
             this.txtCopy.TabIndex = 1;
             this.txtCopy.Text = "#";
-            this.txtCopy.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // label3
             // 
@@ -99,7 +96,6 @@
             this.label3.Size = new System.Drawing.Size(12, 13);
             this.label3.TabIndex = 2;
             this.label3.Text = "/";
-            this.label3.Click += new System.EventHandler(this.label2_Click);
             // 
             // label4
             // 
@@ -109,7 +105,6 @@
             this.label4.Size = new System.Drawing.Size(14, 13);
             this.label4.TabIndex = 2;
             this.label4.Text = "#";
-            this.label4.Click += new System.EventHandler(this.label2_Click);
             // 
             // label5
             // 
@@ -168,7 +163,6 @@
             this.btnCheck.TabIndex = 3;
             this.btnCheck.Text = "Check OUT/IN";
             this.btnCheck.UseVisualStyleBackColor = true;
-            this.btnCheck.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnReserve
             // 
@@ -178,7 +172,6 @@
             this.btnReserve.TabIndex = 3;
             this.btnReserve.Text = "Reserve";
             this.btnReserve.UseVisualStyleBackColor = true;
-            this.btnReserve.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnChangeStock
             // 
@@ -188,7 +181,6 @@
             this.btnChangeStock.TabIndex = 3;
             this.btnChangeStock.Text = "Change Stock";
             this.btnChangeStock.UseVisualStyleBackColor = true;
-            this.btnChangeStock.Click += new System.EventHandler(this.button1_Click);
             // 
             // label10
             // 

@@ -176,3 +176,7 @@ UpgradeLog*.htm
 
 # Microsoft Fakes
 FakesAssemblies/
+
+*.exe
+Proto/bin/Debug/Proto.pdb
+*.cache
