@@ -5,6 +5,13 @@ import (
   "strconv"
 )
 
+// RecAcc recieves a call from another class/module where, based on the call, will
+// choose which case to point it toward
+//
+// parms command, String to be parsed and read to select case
+// parms params, map of strings that hold parameter for the cases to use in later methods
+// parms client, point to the Client module
+
 func RecAcc(command string, params map[string]string, client *Client) bool {
   switch(command) {
     case "set_budget_group": { return setBudgetGroup(params, client) }
@@ -15,6 +22,8 @@ func RecAcc(command string, params map[string]string, client *Client) bool {
   }
   return false
 }
+
+// 
 
 func setBudgetGroup(params map[string]string, client *Client) bool {
   group, groupOk := params["group_name"]
