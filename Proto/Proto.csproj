@@ -52,6 +52,12 @@
     <Compile Include="AccountingItms\Accounting.Designer.cs">
       <DependentUpon>Accounting.cs</DependentUpon>
     </Compile>
+    <Compile Include="AccountingItms\ManageBudgets.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AccountingItms\ManageBudgets.Designer.cs">
+      <DependentUpon>ManageBudgets.cs</DependentUpon>
+    </Compile>
     <Compile Include="AdminItms\Admin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,6 +142,9 @@
     <Compile Include="TLSListener.cs" />
     <EmbeddedResource Include="AccountingItms\Accounting.resx">
       <DependentUpon>Accounting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AccountingItms\ManageBudgets.resx">
+      <DependentUpon>ManageBudgets.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AdminItms\Admin.resx">
       <DependentUpon>Admin.cs</DependentUpon>
