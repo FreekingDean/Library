@@ -23,7 +23,13 @@ func RecAcc(command string, params map[string]string, client *Client) bool {
   return false
 }
 
-// 
+// setBudgetGroup is called from the RecAcc button. Allows User
+// to change a budget for a particular group in the database
+//
+// parms params, A map of strings corresponding to what this function
+//               requires
+// parms client, A pointer that references the client computer that
+//               needed this function
 
 func setBudgetGroup(params map[string]string, client *Client) bool {
   group, groupOk := params["group_name"]
@@ -56,6 +62,14 @@ func setBudgetGroup(params map[string]string, client *Client) bool {
   return true
 }
 
+// setMasterBudget is called from the RecAcc button. Allows User
+// to change the total budget for the database
+//
+// parms params, A map of strings corresponding to what this function
+//               requires
+// parms client, A pointer that references the client computer that
+//               needed this function
+
 func setMasterBudget(params map[string]string, client *Client) bool {
   amountS, amountOk := params["amount"]
   if !amountOk {
@@ -82,6 +96,14 @@ func setMasterBudget(params map[string]string, client *Client) bool {
   return true
 }
 
+// manageWallet is need to see what amount of money a particular group in the
+// database has
+//
+// parms params, A map of strings corresponding to what this function
+//               requires
+// parms client, A pointer that references the client computer that
+//               needed this function
+
 func manageWallet(params map[string]string, client *Client) bool {
   amountS, amountOk := params["amount"]
   reason, reasonOk := params["reason"]
@@ -105,7 +127,10 @@ func manageWallet(params map[string]string, client *Client) bool {
   db.Save(&newWallet)
   return true
 }
-
+// HEYYYYYY MR DEAN!!!!
+// HEYYYYYY MR DEAN!!!!
+// HEYYYYYY MR DEAN!!!!
+// HEYYYYYY MR DEAN!!!!
 //TODO - IMPLEMENT
 func acReport(params map[string]string, client *Client) bool {
   return true
