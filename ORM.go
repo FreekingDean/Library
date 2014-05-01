@@ -57,15 +57,17 @@ type Customer struct {
   Reserve     []Reservation
 }
 
-type BudgetGroup struct {
+type Budget struct {
   Id              int64
   Name            string
   Amount          int64
-  RemainingGroups int64
+  Remaining       int64
+  LastWallet      []Wallet
 }
 
 type Wallet struct {
   Id              int64
+  BudgetId        int64
   Reason          string
   Amount          int64
   RunningTotal    int64
@@ -101,14 +103,16 @@ func BuildDB() {
   db.CreateTable(BookCopy{})
   db.CreateTable(Wallet{})
   db.CreateTable(Customer{})
-  db.CreateTable(BudgetGroup{})
+  db.CreateTable(Budget{})
   passwordDigest, err := bcrypt.GenerateFromPassword([]byte("admin"), 4)
   if err != nil {
     log.Fatal(err)
     return
   }
   db.Save(&User{Username: "root", PasswordDigest: string(passwordDigest), Role: 0 })
-  db.Save(&BudgetGroup{Name: "MASTER", Amount: 10000, RemainingGroups: 10000})
+  var wallets []Wallet
+  wallets = append(wallets, Wallet{Reason: "Init", Amount: 10000, RunningTotal: 10000})
+  db.Save(&Budget{Name: "MASTER", Amount: 10000, Remaining: 10000, LastWallet: wallets})
   var user User
   db.First(&user)
   log.Println(user.Username + ":"+ user.PasswordDigest)
@@ -145,13 +149,13 @@ func GetCustomer(custId int) *Customer {
   return customer
 }
 
-func GetBudgetGroup(name string) *BudgetGroup {
-  var bg *BudgetGroup
+func GetBudgetGroup(name string) *Budget {
+  var bg *Budget
   db.Where("name = ?", name).First(&bg)
   return bg
 }
 
-func GetMasterBudget() *BudgetGroup {
+func GetMasterBudget() *Budget {
   return GetBudgetGroup("MASTER")
 }
 

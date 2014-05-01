@@ -99,7 +99,7 @@ func purchase(params map[string]string, client *Client) bool {
   if bgOk {
     bg = GetBudgetGroup(budgetGroup)
   }
-  if int(bg.RemainingGroups) < cost {
+  if int(bg.Remaining) < cost {
     SendErr(client, "Not enough money in the group to purchase", "pu_money")
     return false
   }
