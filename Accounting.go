@@ -60,6 +60,13 @@ func getBudget(params map[string]string, client *Client) bool {
   return true
 }
 
+// setBudgetGroup is called from the RecAcc button. Allows User
+// to change a budget for a particular group in the database
+//
+// parms params, A map of strings corresponding to what this function
+//               requires
+// parms client, A pointer that references the client computer that
+//               needed this function
 func manageBudget(params map[string]string, client *Client) bool {
   bidS, bidOk := params["budget_id"]
   group, groupOk := params["group_name"]
@@ -100,6 +107,25 @@ func manageBudget(params map[string]string, client *Client) bool {
   }
   if budget.Id == 0 && bid != 0 {
     SendErr(client, "Couldn't find budget", "04002")
+  budget.Name = group
+  budget.Amount = amount
+  db.Save(&budget)
+  db.Save(&masterBudget)
+  return true
+}
+
+// setMasterBudget is called from the RecAcc button. Allows User
+// to change the total budget for the database
+//
+// parms params, A map of strings corresponding to what this function
+//               requires
+// parms client, A pointer that references the client computer that
+//               needed this function
+
+func setMasterBudget(params map[string]string, client *Client) bool {
+  amountS, amountOk := params["amount"]
+  if !amountOk {
+    SendErr(client, "Need more info", "mb_info")
     return false
   }
   if budget.Id == 1 && group != budget.Name {
@@ -140,6 +166,14 @@ func manageBudget(params map[string]string, client *Client) bool {
   SendMessage(client, "success", make(map[string]string))
   return true
 }
+
+// manageWallet is need to see what amount of money a particular group in the
+// database has
+//
+// parms params, A map of strings corresponding to what this function
+//               requires
+// parms client, A pointer that references the client computer that
+//               needed this function
 
 func manageWallet(params map[string]string, client *Client) bool {
   bidS, bidOk := params["budget_id"]
@@ -207,7 +241,10 @@ func manageWallet(params map[string]string, client *Client) bool {
   SendMessage(client, "success", make(map[string]string))
   return true
 }
-
+// HEYYYYYY MR DEAN!!!!
+// HEYYYYYY MR DEAN!!!!
+// HEYYYYYY MR DEAN!!!!
+// HEYYYYYY MR DEAN!!!!
 //TODO - IMPLEMENT
 func acReport(params map[string]string, client *Client) bool {
   return true

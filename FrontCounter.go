@@ -7,6 +7,10 @@ import (
 
 const OFFSET_NUM = 10
 
+//RecFC recieves the command and routes it to the correct function.
+//param client pointer to the original caller
+//param params map of parameter names and values
+//return false if there is a problem
 func RecFC(command string, params map[string]string, client *Client) bool {
   switch(command) {
     case "check_out": { return checkOut(params, client) }
@@ -21,6 +25,12 @@ func RecFC(command string, params map[string]string, client *Client) bool {
   return false
 }
 
+//checkOut performs sanity checks and then checks to see if the 
+//DB to see if the customer can take out a book.  If they can it 
+//adds the book to the DB as being checked out by 
+//param client pointer to the original caller
+//param params map of parameter names and values
+//return false if there is a problem or the customer can't checkout a book
 func checkOut(params map[string]string, client *Client) bool {
   isbnS, isbnOk:= params["isbn"]
   copyNumberS, copyOk := params["copy_number"]
@@ -67,6 +77,10 @@ func checkOut(params map[string]string, client *Client) bool {
   return true
 }
 
+//reserve puts a book reserve.  It checks for errors or if there is a copy in stock first
+//param client pointer to the original caller
+//param params map of parameter names and values
+//return false if there is a problem
 func reserve(params map[string]string, client *Client) bool {
   isbnS, isbnOk := params["isbn"]
   customerIDS, custOk := params["customer_id"]
@@ -96,6 +110,10 @@ func reserve(params map[string]string, client *Client) bool {
   return true
 }
 
+//checkIn checks in a book a customer is returning.  Checks for formating errors
+//param client pointer to the original caller
+//param params map of parameter names and values
+//return false if there is a problem
 func checkIn(params map[string]string, client *Client) bool {
   isbnS, isbnOk := params["isbn"]
   copyNumberS, copyOk := params["copy_number"]
@@ -155,12 +173,20 @@ func checkIn(params map[string]string, client *Client) bool {
   return true
 }
 
+//alertReserve alerts a customer if a book they want was returned by another customer.
+//param client pointer to the original caller
+//param params map of parameter names and values
+//return false if there is a problem
 func alertReserve(custID int, client *Client) {
   info := make(map[string]string)
   info["customer_id"] = strconv.Itoa(custID)
   SendMessage(client, "reservation_alert", info)
 }
 
+//manageCustomer 
+//param client pointer to the original caller
+//param params map of parameter names and values
+//return false if there is a problem
 func manageCustomer(params map[string]string, client *Client) bool {
   custIDS, custOk := params["customer_id"]
   firstName, firstOk := params["fist_name"]
@@ -198,6 +224,7 @@ func manageCustomer(params map[string]string, client *Client) bool {
   return true
 }
 
+
 func deleteCustomer(params map[string]string, client *Client) bool {
   customerIDS, custIdOk := params["customer_id"]
   if !custIdOk {
@@ -218,6 +245,10 @@ func deleteCustomer(params map[string]string, client *Client) bool {
   return true
 }
 
+//search finds books with the given paramters if they exsist after sanity checks are done
+//param client pointer to the original caller
+//param params map of parameter names and values
+//return false if there is a problem
 func search(params map[string]string, client *Client) bool {
   startS, startOk := params["start"]
   var start = 0
