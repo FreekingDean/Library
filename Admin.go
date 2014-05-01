@@ -13,7 +13,6 @@ import(
 // parms cmd, String to be parsed and read to select case
 // parms params, map of strings that hold parameter for the cases to use in later methods
 // parms client, point to the Client module
-
 func RecAdmin(cmd string, params map[string]string, client *Client) bool {
   switch(cmd) {
     case "login": { return login(params, client) }
@@ -30,7 +29,8 @@ func RecAdmin(cmd string, params map[string]string, client *Client) bool {
 // login uses certain strings from params to access the database to
 // see if certain credentials match up
 //
-// parms
+// parms params, map of strings that hold parameter for the cases to use in later methods
+// parms client, point to the Client module 
 func login(params map[string]string, client *Client) bool {
   username, unOk := params["username"]
   password, passOk := params["password"]
@@ -51,6 +51,9 @@ func login(params map[string]string, client *Client) bool {
   return true
 }
 
+//getUser returns a user from database
+// parms params, map of strings that hold parameter for the cases to use in later methods
+// parms client, point to the Client module
 func getUser(params map[string]string, client *Client) bool {
   userId, uIdOk := params["user_id"]
   if !uIdOk {
@@ -78,6 +81,9 @@ func getUser(params map[string]string, client *Client) bool {
   return true
 }
 
+//modifyUser alters a user in the database
+// parms params, map of strings that hold parameter for the cases to use in later methods
+// parms client, point to the Client module
 func modifyUser(params map[string]string, client *Client) bool {
   username, unOk := params["username"]
   password, passOk := params["password"]
@@ -133,6 +139,9 @@ func modifyUser(params map[string]string, client *Client) bool {
   return true
 }
 
+//deleteUser removes from the database
+// parms params, map of strings that hold parameter for the cases to use in later methods
+// parms client, point to the Client module
 func deleteUser(params map[string]string, client *Client) bool {
   userId, uIdOk := params["user_id"]
   password, passOk := params["password"]
@@ -157,11 +166,17 @@ func deleteUser(params map[string]string, client *Client) bool {
   return true
 }
 
+//backupSystem makes a backup file for the database
+// parms params, map of strings that hold parameter for the cases to use in later methods
+// parms client, point to the Client module
 func backupSystem(params map[string]string, client *Client) bool {
   //BACKUP
   return true
 }
 
+//restoreSystem retores the database from a previously made backup file
+// parms params, map of strings that hold parameter for the cases to use in later methods
+// parms client, point to the Client module
 func restoreSystem(params map[string]string, client *Client) bool {
   //RESTORE
   return true
