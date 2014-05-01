@@ -120,7 +120,7 @@
             this.btnCheck.TabIndex = 3;
             this.btnCheck.Text = "Check IN/OUT";
             this.btnCheck.UseVisualStyleBackColor = true;
-            this.btnCheck.Click += new System.EventHandler(this.button1_Click);
+            this.btnCheck.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // btnReserve
             // 

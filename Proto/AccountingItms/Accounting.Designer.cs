@@ -28,48 +28,52 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnAcc = new System.Windows.Forms.Button();
-            this.btnMat = new System.Windows.Forms.Button();
-            this.btnFC = new System.Windows.Forms.Button();
+            this.btnBack = new System.Windows.Forms.Button();
+            this.btnWallets = new System.Windows.Forms.Button();
+            this.btnBudgets = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // btnAcc
+            // btnBack
             // 
-            this.btnAcc.Location = new System.Drawing.Point(13, 141);
-            this.btnAcc.Name = "btnAcc";
-            this.btnAcc.Size = new System.Drawing.Size(259, 59);
-            this.btnAcc.TabIndex = 3;
-            this.btnAcc.Text = "Back";
-            this.btnAcc.UseVisualStyleBackColor = true;
-            this.btnAcc.Click += new System.EventHandler(this.btnAcc_Click);
+            this.btnBack.Location = new System.Drawing.Point(17, 174);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(345, 73);
+            this.btnBack.TabIndex = 3;
+            this.btnBack.Text = "Back";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
-            // btnMat
+            // btnWallets
             // 
-            this.btnMat.Location = new System.Drawing.Point(13, 76);
-            this.btnMat.Name = "btnMat";
-            this.btnMat.Size = new System.Drawing.Size(259, 59);
-            this.btnMat.TabIndex = 4;
-            this.btnMat.Text = "Manage Wallets";
-            this.btnMat.UseVisualStyleBackColor = true;
+            this.btnWallets.Location = new System.Drawing.Point(17, 94);
+            this.btnWallets.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnWallets.Name = "btnWallets";
+            this.btnWallets.Size = new System.Drawing.Size(345, 73);
+            this.btnWallets.TabIndex = 4;
+            this.btnWallets.Text = "Manage Wallets";
+            this.btnWallets.UseVisualStyleBackColor = true;
             // 
-            // btnFC
+            // btnBudgets
             // 
-            this.btnFC.Location = new System.Drawing.Point(13, 13);
-            this.btnFC.Name = "btnFC";
-            this.btnFC.Size = new System.Drawing.Size(259, 59);
-            this.btnFC.TabIndex = 5;
-            this.btnFC.Text = "Manage Budgets";
-            this.btnFC.UseVisualStyleBackColor = true;
-            this.btnFC.Click += new System.EventHandler(this.btnFC_Click);
+            this.btnBudgets.Location = new System.Drawing.Point(17, 17);
+            this.btnBudgets.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnBudgets.Name = "btnBudgets";
+            this.btnBudgets.Size = new System.Drawing.Size(345, 73);
+            this.btnBudgets.TabIndex = 5;
+            this.btnBudgets.Text = "Manage Budgets";
+            this.btnBudgets.UseVisualStyleBackColor = true;
+            this.btnBudgets.Click += new System.EventHandler(this.btnBudgets_Click);
             // 
             // Accounting
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 209);
-            this.Controls.Add(this.btnAcc);
-            this.Controls.Add(this.btnMat);
-            this.Controls.Add(this.btnFC);
+            this.ClientSize = new System.Drawing.Size(379, 257);
+            this.Controls.Add(this.btnBack);
+            this.Controls.Add(this.btnWallets);
+            this.Controls.Add(this.btnBudgets);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Accounting";
             this.Text = "Accounting";
             this.ResumeLayout(false);
@@ -78,8 +82,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnAcc;
-        private System.Windows.Forms.Button btnMat;
-        private System.Windows.Forms.Button btnFC;
+        private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.Button btnWallets;
+        private System.Windows.Forms.Button btnBudgets;
     }
 }

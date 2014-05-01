@@ -16,7 +16,10 @@ namespace Proto.FrontCounter
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Opens up a new CheckOutBook form 
+        /// </summary>
+        private void btnSearch_Click(object sender, EventArgs e)
         {
             if (checkBookList())
             {

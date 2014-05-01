@@ -28,47 +28,51 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnGoBack = new System.Windows.Forms.Button();
-            this.btnVendor = new System.Windows.Forms.Button();
-            this.btnRecieve = new System.Windows.Forms.Button();
+            this.btnBack = new System.Windows.Forms.Button();
+            this.btnRestore = new System.Windows.Forms.Button();
+            this.btnBackup = new System.Windows.Forms.Button();
             this.btnMngUser = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // btnGoBack
+            // btnBack
             // 
-            this.btnGoBack.Location = new System.Drawing.Point(13, 207);
-            this.btnGoBack.Name = "btnGoBack";
-            this.btnGoBack.Size = new System.Drawing.Size(259, 59);
-            this.btnGoBack.TabIndex = 9;
-            this.btnGoBack.Text = "Go Back";
-            this.btnGoBack.UseVisualStyleBackColor = true;
-            this.btnGoBack.Click += new System.EventHandler(this.btnGoBack_Click_1);
+            this.btnBack.Location = new System.Drawing.Point(17, 255);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(345, 73);
+            this.btnBack.TabIndex = 9;
+            this.btnBack.Text = "Back";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
-            // btnVendor
+            // btnRestore
             // 
-            this.btnVendor.Location = new System.Drawing.Point(13, 142);
-            this.btnVendor.Name = "btnVendor";
-            this.btnVendor.Size = new System.Drawing.Size(259, 59);
-            this.btnVendor.TabIndex = 8;
-            this.btnVendor.Text = "Restore";
-            this.btnVendor.UseVisualStyleBackColor = true;
-            this.btnVendor.Click += new System.EventHandler(this.btnVendor_Click);
+            this.btnRestore.Location = new System.Drawing.Point(17, 175);
+            this.btnRestore.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRestore.Name = "btnRestore";
+            this.btnRestore.Size = new System.Drawing.Size(345, 73);
+            this.btnRestore.TabIndex = 8;
+            this.btnRestore.Text = "Restore";
+            this.btnRestore.UseVisualStyleBackColor = true;
+            this.btnRestore.Click += new System.EventHandler(this.btnRestore_Click);
             // 
-            // btnRecieve
+            // btnBackup
             // 
-            this.btnRecieve.Location = new System.Drawing.Point(13, 77);
-            this.btnRecieve.Name = "btnRecieve";
-            this.btnRecieve.Size = new System.Drawing.Size(259, 59);
-            this.btnRecieve.TabIndex = 6;
-            this.btnRecieve.Text = "Backup";
-            this.btnRecieve.UseVisualStyleBackColor = true;
-            this.btnRecieve.Click += new System.EventHandler(this.btnRecieve_Click);
+            this.btnBackup.Location = new System.Drawing.Point(17, 95);
+            this.btnBackup.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnBackup.Name = "btnBackup";
+            this.btnBackup.Size = new System.Drawing.Size(345, 72);
+            this.btnBackup.TabIndex = 6;
+            this.btnBackup.Text = "Backup";
+            this.btnBackup.UseVisualStyleBackColor = true;
+            this.btnBackup.Click += new System.EventHandler(this.btnBackup_Click);
             // 
             // btnMngUser
             // 
-            this.btnMngUser.Location = new System.Drawing.Point(13, 12);
+            this.btnMngUser.Location = new System.Drawing.Point(17, 15);
+            this.btnMngUser.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnMngUser.Name = "btnMngUser";
-            this.btnMngUser.Size = new System.Drawing.Size(259, 59);
+            this.btnMngUser.Size = new System.Drawing.Size(345, 73);
             this.btnMngUser.TabIndex = 7;
             this.btnMngUser.Text = "Manage User";
             this.btnMngUser.UseVisualStyleBackColor = true;
@@ -76,13 +80,14 @@
             // 
             // Admin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 271);
-            this.Controls.Add(this.btnGoBack);
-            this.Controls.Add(this.btnVendor);
-            this.Controls.Add(this.btnRecieve);
+            this.ClientSize = new System.Drawing.Size(379, 334);
+            this.Controls.Add(this.btnBack);
+            this.Controls.Add(this.btnRestore);
+            this.Controls.Add(this.btnBackup);
             this.Controls.Add(this.btnMngUser);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Admin";
             this.Text = "Admin";
             this.ResumeLayout(false);
@@ -91,9 +96,9 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnGoBack;
-        private System.Windows.Forms.Button btnVendor;
-        private System.Windows.Forms.Button btnRecieve;
+        private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.Button btnRestore;
+        private System.Windows.Forms.Button btnBackup;
         private System.Windows.Forms.Button btnMngUser;
     }
 }

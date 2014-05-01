@@ -16,6 +16,11 @@ namespace Proto
             InitializeComponent();
         }
 
-        
+        private void CheckOutBook_Load(object sender, EventArgs e)
+        {
+
+        }
+
+               
     }
 }

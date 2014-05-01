@@ -21,9 +21,12 @@ namespace Proto.AccountingItms
 
         }
 
+        /// <summary>
+        /// Gets the requested budget from the server.
+        /// </summary>
         private void btnGet_Click(object sender, EventArgs e)
         {
-            if (txtBudgetID.Text == "")
+            if (txtBudgetID.Text.Equals(""))
             {
                 Error_Msg em = new Error_Msg("15002", "Please enter a budget ID.");
             }
@@ -44,6 +47,10 @@ namespace Proto.AccountingItms
             }
         }
 
+        /// <summary>
+        /// Loads the form and sets the basic functionality
+        /// like btnAdd in add mode, and the top level commands for interacting with the server.
+        /// </summary>
         private void ManageBudgets_Load(object sender, EventArgs e)
         {
             btnAdd.Text = "Add";
@@ -66,6 +73,9 @@ namespace Proto.AccountingItms
             txtLeftInMW.Text = command["wallet_running_total"];
         }
 
+        /// <summary>
+        /// Adds a new budget item to the server.
+        /// </summary>
         private void btnAdd_Click(object sender, EventArgs e)
         {
             Dictionary<string, string> command = new Dictionary<string, string>();
@@ -87,6 +97,9 @@ namespace Proto.AccountingItms
             }
         }
 
+        /// <summary>
+        /// Deletes a budget from the system.
+        /// </summary>
         private void btnDelete_Click(object sender, EventArgs e)
         {
             Dictionary<string, string> command = new Dictionary<string, string>();
@@ -103,6 +116,9 @@ namespace Proto.AccountingItms
             }
         }
 
+        /// <summary>
+        /// Returns back to the calling form.
+        /// </summary>
         private void btnBack_Click(object sender, EventArgs e)
         {
             callBackForm.Show();

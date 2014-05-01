@@ -18,6 +18,9 @@ namespace Proto.AdminItms
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Opens up the Manage User Form with this as the call back form.
+        /// </summary>
         private void btnMngUser_Click(object sender, EventArgs e)
         {
             ManageUser userForm = new ManageUser(this);
@@ -25,7 +28,10 @@ namespace Proto.AdminItms
             userForm.Show();
         }
 
-        private void btnVendor_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Sends the restore command to the server.
+        /// </summary>
+        private void btnRestore_Click(object sender, EventArgs e)
         {
             Dictionary<string, string> backup = new Dictionary<string, string>();
             backup["top_cmd"] = "admin";
@@ -34,7 +40,10 @@ namespace Proto.AdminItms
             TLSListener.SendMessage(toSend);
         }
 
-        private void btnRecieve_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Sends the backup command to the server
+        /// </summary>
+        private void btnBackup_Click(object sender, EventArgs e)
         {
             Dictionary<string, string> backup = new Dictionary<string, string>();
             backup["top_cmd"] = "admin";
@@ -43,7 +52,10 @@ namespace Proto.AdminItms
             TLSListener.SendMessage(toSend);
         }
 
-        private void btnGoBack_Click_1(object sender, EventArgs e)
+        /// <summary>
+        /// Goes back to the calling form
+        /// </summary>
+        private void btnBack_Click(object sender, EventArgs e)
         {
             this.Hide();
             callbackForm.Show();
