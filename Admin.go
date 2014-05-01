@@ -7,6 +7,13 @@ import(
   "code.google.com/p/go.crypto/bcrypt"
 )
 
+// RecAdmin recieves a call from another class/module where, based on the call, will
+// choose which case to point it toward
+//
+// parms cmd, String to be parsed and read to select case
+// parms params, map of strings that hold parameter for the cases to use in later methods
+// parms client, point to the Client module
+
 func RecAdmin(cmd string, params map[string]string, client *Client) bool {
   switch(cmd) {
     case "login": { return login(params, client) }
@@ -20,6 +27,10 @@ func RecAdmin(cmd string, params map[string]string, client *Client) bool {
   return false
 }
 
+// login uses certain strings from params to access the database to
+// see if certain credentials match up
+//
+// parms
 func login(params map[string]string, client *Client) bool {
   username, unOk := params["username"]
   password, passOk := params["password"]
