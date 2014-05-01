@@ -245,6 +245,10 @@ func deleteCustomer(params map[string]string, client *Client) bool {
   return true
 }
 
+//search finds books with the given paramters if they exsist after sanity checks are done
+//param client pointer to the original caller
+//param params map of parameter names and values
+//return false if there is a problem
 func search(params map[string]string, client *Client) bool {
   startS, startOk := params["start"]
   var start = 0
