@@ -104,6 +104,8 @@ func BuildDB() {
   db.CreateTable(Wallet{})
   db.CreateTable(Customer{})
   db.CreateTable(Budget{})
+  db.CreateTable(PurchaseOrder{})
+  db.CreateTable(PoCopy{})
   passwordDigest, err := bcrypt.GenerateFromPassword([]byte("admin"), 4)
   if err != nil {
     log.Fatal(err)
@@ -123,50 +125,4 @@ func GetUser(username string) User {
   fmt.Println(username)
   db.First(&user)
   return user
-}
-
-func GetBook(isbn int) *Book {
-  var book *Book
-  db.Where("isbn = ?", isbn).First(&book)
-  /*var reservations []Reserve
-  db.Model(&book).Where(&reservations)
-  book.Reserve = reservations
-  var copies []Copy
-  db.Model(&book).Where(&copies)
-  book.Copy = copies*/
-  return book
-}
-
-func GetCustomer(custId int) *Customer {
-  var customer *Customer
-  db.Where("id = ?", custId).First(&customer)
-  /*var checkedOut []Copy
-  db.Model(&customer).Where(&checkedOut)
-  customer.CheckedOut = checkedOut
-  var reservations []Reserve
-  db.Model(&customer).Where(&resercations)
-  customer.Reserve = reservations*/
-  return customer
-}
-
-func GetBudgetGroup(name string) *Budget {
-  var bg *Budget
-  db.Where("name = ?", name).First(&bg)
-  return bg
-}
-
-func GetMasterBudget() *Budget {
-  return GetBudgetGroup("MASTER")
-}
-
-func GetLastWallet() *Wallet {
-  var wallet *Wallet
-  db.Last(&wallet)
-  return wallet
-}
-
-func GetPO(orderNumber int) *PurchaseOrder {
-  var order *PurchaseOrder
-  db.Where("id = ?", orderNumber).First(&order)
-  return order
 }

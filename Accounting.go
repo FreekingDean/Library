@@ -16,12 +16,14 @@ func RecAcc(command string, params map[string]string, client *Client) bool {
     case "get_budget":  {return getBudget(params, client) }
     case "manage_budget": { return manageBudget(params, client) }
     case "manage_wallet": { return manageWallet(params, client) }
+    case "delete_budget": { return deleteBudget(params, client) }
     case "report": { return acReport(params, client) }
     default: SendErr(client, "No command/commmand not recognized", "admin_cmd")
   }
   return false
 }
 
+// getBudget gets the budget from the budget id
 func getBudget(params map[string]string, client *Client) bool {
   bidS, bidOk := params["budget_id"]
   var bid int
@@ -60,13 +62,7 @@ func getBudget(params map[string]string, client *Client) bool {
   return true
 }
 
-// setBudgetGroup is called from the RecAcc button. Allows User
-// to change a budget for a particular group in the database
-//
-// parms params, A map of strings corresponding to what this function
-//               requires
-// parms client, A pointer that references the client computer that
-//               needed this function
+//manageBudget manages the budget bid, or creates a new one
 func manageBudget(params map[string]string, client *Client) bool {
   bidS, bidOk := params["budget_id"]
   group, groupOk := params["group_name"]
@@ -107,25 +103,6 @@ func manageBudget(params map[string]string, client *Client) bool {
   }
   if budget.Id == 0 && bid != 0 {
     SendErr(client, "Couldn't find budget", "04002")
-  budget.Name = group
-  budget.Amount = amount
-  db.Save(&budget)
-  db.Save(&masterBudget)
-  return true
-}
-
-// setMasterBudget is called from the RecAcc button. Allows User
-// to change the total budget for the database
-//
-// parms params, A map of strings corresponding to what this function
-//               requires
-// parms client, A pointer that references the client computer that
-//               needed this function
-
-func setMasterBudget(params map[string]string, client *Client) bool {
-  amountS, amountOk := params["amount"]
-  if !amountOk {
-    SendErr(client, "Need more info", "mb_info")
     return false
   }
   if budget.Id == 1 && group != budget.Name {
@@ -167,14 +144,7 @@ func setMasterBudget(params map[string]string, client *Client) bool {
   return true
 }
 
-// manageWallet is need to see what amount of money a particular group in the
-// database has
-//
-// parms params, A map of strings corresponding to what this function
-//               requires
-// parms client, A pointer that references the client computer that
-//               needed this function
-
+//manageWallet manages the wallet from the budget id
 func manageWallet(params map[string]string, client *Client) bool {
   bidS, bidOk := params["budget_id"]
   amountS, amountOk := params["amount"]
@@ -183,7 +153,7 @@ func manageWallet(params map[string]string, client *Client) bool {
     SendErr(client, "Need more info", "mw_info")
     return false
   }
-  bid, err = strconv.Atoi(bidS)
+  bid, err := strconv.Atoi(bidS)
   if err != nil {
     SendErr(client, "Budget ID not number!", "04004")
     return false
@@ -195,18 +165,16 @@ func manageWallet(params map[string]string, client *Client) bool {
   }
   amount := int64(amountI)
   var budget Budget
-  var wallet Wallet
-  db.Where("id = ?", bid).First(&budget)
-  if budget.Id == 0 {
-    SendErr(client, "Couldn't find budget", "04002")
-    return false
-  }
   var wallets []Wallet
   var wallet Wallet
   var mBud Budget
   var mWals []Wallet
   var mWal Wallet
   db.Where("id = ?", bid).First(&budget)
+  if budget.Id == 0 {
+    SendErr(client, "Couldn't find budget", "04002")
+    return false
+  }
   db.Model(&budget).Related(&wallets)
   if len(wallets) > 0 {
     wallet = wallets[len(wallets)-1]
@@ -233,7 +201,7 @@ func manageWallet(params map[string]string, client *Client) bool {
     newMWallet := Wallet{
       RunningTotal: newTot,
       Amount: amount,
-      Reason: "Budget ["+budget.Name+"] :"+reason
+      Reason: "Budget ["+budget.Name+"] :"+reason,
     }
     mBud.LastWallet = append(mWals, newMWallet)
     db.Save(&mBud)
@@ -241,11 +209,74 @@ func manageWallet(params map[string]string, client *Client) bool {
   SendMessage(client, "success", make(map[string]string))
   return true
 }
-// HEYYYYYY MR DEAN!!!!
-// HEYYYYYY MR DEAN!!!!
-// HEYYYYYY MR DEAN!!!!
-// HEYYYYYY MR DEAN!!!!
-//TODO - IMPLEMENT
+
+//deleteBudget deletes the budget from the id
+func deleteBudget(params map[string]string, client *Client) bool {
+  bidS, bidOk := params["budget_id"]
+  if !bidOk {
+    SendErr(client, "Need more info", "mw_info")
+    return false
+  }
+  bid, err := strconv.Atoi(bidS)
+  if err != nil {
+    SendErr(client, "Budget ID not number!", "04004")
+    return false
+  }
+  if bid == 1 {
+    SendErr(client, "Can't delete MASTER budget", "04011")
+    return false
+  }
+  var budget Budget
+  var wallets []Wallet
+  var wallet Wallet
+  var mBud Budget
+  db.Where("id = ?", bid).First(&budget)
+  if budget.Id == 0 {
+    SendErr(client, "Couldn't find budget", "04002")
+    return false
+  }
+  db.Model(&budget).Related(&wallets)
+  if len(wallets) > 0 {
+    wallet = wallets[len(wallets)-1]
+  }
+  db.Where("id = 1").First(&mBud)
+  if wallet.RunningTotal != budget.Amount {
+    SendErr(client, "Please make sure wallet = budget amount", "04012")
+    return false
+  }
+  mBud.Remaining += budget.Amount
+  db.Save(&mBud)
+  db.Delete(&budget)
+  SendMessage(client, "success", make(map[string]string))
+  return true
+}
+
 func acReport(params map[string]string, client *Client) bool {
+  report := make(map[string]string)
+  var budgets []Budget
+  db.Find(&budgets)
+  report["num_budgets"] = strconv.Itoa(len(budgets))
+  for index, budget := range budgets {
+    budgetId := strconv.Itoa(int(budget.Id))
+    report["budget_"+strconv.Itoa(index)] = budgetId
+    report[budgetId+"_name"] = budget.Name
+    report[budgetId+"_amount"] = strconv.Itoa(int(budget.Amount))
+    report[budgetId+"_remaining"] = strconv.Itoa(int(budget.Remaining))
+    var wallets []Wallet
+    db.Model(&budget).Related(&wallets)
+    report[budgetId+"_num_wallets"] = strconv.Itoa(len(wallets))
+    for walIndex, wallet := range wallets {
+      report[budgetId+"_wallet_"+strconv.Itoa(walIndex)+"_reason"] = wallet.Reason
+      report[budgetId+"_wallet_"+strconv.Itoa(walIndex)+"_amount"] = strconv.Itoa(int(wallet.Amount))
+      report[budgetId+"_wallet_"+strconv.Itoa(walIndex)+"_running_total"] = strconv.Itoa(int(wallet.RunningTotal))
+    }
+    if (index+1)%5 == 0 {
+      report["more"] = "true"
+      SendMessage(client, "success", report)
+      report = make(map[string]string)
+    }
+  }
+  report["more"] = "false"
+  SendMessage(client, "success", report)
   return true
 }

@@ -22,7 +22,7 @@ func multiRec(client *Client, msg string) {
       case "materials": RecMat(params["cmd"], params, client); break
       case "accounting": RecAcc(params["cmd"], params, client); break
       case "admin": RecAdmin(params["cmd"], params, client); break
-      default: SendErr(client, "No command/commmand not recognized", "no_cmd")
+      default: SendErr(client, "No command/commmand not recognized", "02001")
     }
   } else { //if not authed
     if params["top_cmd"] == "login" {
@@ -31,7 +31,7 @@ func multiRec(client *Client, msg string) {
         client.Authed = true
       }
     } else { //if command != "login"
-      SendErr(client, "Please authenticate first", "auth")
+      SendErr(client, "Please authenticate first", "02002")
     }
   }
 }
