@@ -37,6 +37,7 @@ func main() {
 		println("Error accept:", err.Error())
 		return
 	}
+	fmt.Println("STARTING LIBRARY SYSTEM")
 	for {
 		conn, err := listener.Accept()
 		if err != nil {
@@ -71,5 +72,5 @@ func recMsg(netCon net.Conn, msg string) {
 }
 
 func (client *Client) SendMsg(msg string) {
-  client.Conn.Write([]byte(msg))
+  client.Conn.Write([]byte(msg+"\n"))
 }

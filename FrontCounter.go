@@ -482,24 +482,21 @@ func fcReport(params map[string]string, client *Client) bool {
     }
     var reservations []Reservation
     db.Model(&book).Related(&reservations)
+    report[bookId+"_num_reserves"] = strconv.Itoa(len(reservations))
     for resIndex, curReserve := range reservations {
       report[bookId+"_reservation_"+strconv.Itoa(resIndex)+"_reserve_id"] = strconv.Itoa(int(curReserve.CustomerId))
     }
-    if (index+1)%5 == 0 {
-      report["more"] = "true"
-      SendMessage(client, "success", report)
-      report = make(map[string]string)
-    }
+    report["more"] = "true"
+    SendMessage(client, "success", report)
+    report = make(map[string]string)
   }
-  report["more"] = "true"
-  SendMessage(client, "success", report)
   report["cust"] = "true"
   db.Find(&customers)
   report["num_customers"] = strconv.Itoa(len(customers))
   for index, customer := range customers {
     custId := strconv.Itoa(int(customer.Id))
     report["customer_"+strconv.Itoa(index)] = custId
-    report[custId + "_fist_name"] = customer.FirstName
+    report[custId + "_first_name"] = customer.FirstName
     report[custId + "_last_name"] = customer.LastName
     report[custId + "_status"] = strconv.Itoa(int(customer.Status))
     var copies []BookCopy
@@ -511,15 +508,15 @@ func fcReport(params map[string]string, client *Client) bool {
     }
     var reservations []Reservation
     db.Model(&customer).Related(&reservations)
+    report[custId+"_num_reservations"] = strconv.Itoa(len(reservations))
     for resIndex, curReserve := range reservations {
       report[custId+"_reservation_"+strconv.Itoa(resIndex)+"_book_id"] = strconv.Itoa(int(curReserve.BookId))
     }
-    if (index+1)%5 == 0 {
-      report["more"] = "true"
-      SendMessage(client, "success", report)
-      report = make(map[string]string)
-    }
+    report["more"] = "true"
+    SendMessage(client, "success", report)
+    report = make(map[string]string)
   }
+  report = make(map[string]string)
   report["more"] = "false"
   SendMessage(client, "success", report)
   return true
